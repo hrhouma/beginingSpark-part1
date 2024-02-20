@@ -1,4 +1,4 @@
-#### ÉVALUATION FORMATIVE #1
+# ÉVALUATION FORMATIVE #1
 
 ## EXERCICE #1
 Expliquez la différence entre les transformations et les actions dans le contexte de Spark. Référez-vous au fichier PDF joint pour étayer votre réponse.
