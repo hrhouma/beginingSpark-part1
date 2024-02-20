@@ -77,10 +77,64 @@ Dans une université, nous avons deux ensembles de données : les étudiants et 
 - **Avec `fullOuterJoin`** : Pour une vue directe des correspondances.
 - **Avec `cogroup`** : Pour un regroupement détaillé par ID étudiant.
 
+Je m'excuse pour l'omission. Permettez-moi de compléter l'exemple pratique avec les détails manquants.
+
+## Exemple Pratique : Scénario Universitaire (Complété)
+
+### Contexte
+
+Dans une université, nous disposons de deux ensembles de données gérés avec Apache Spark :
+
+- **RDD Étudiants (`rddEtudiants`)** : Contient des paires clé-valeur où la clé est l'ID de l'étudiant et la valeur est le nom de l'étudiant.
+    - Exemple : `(("E1", "Alice"), ("E2", "Bob"), ("E3", "Charlie"), ("E4", "Diana"))`
+- **RDD Inscriptions (`rddInscriptions`)** : Contient des paires clé-valeur où la clé est l'ID de l'étudiant et la valeur est l'ID du cours auquel l'étudiant est inscrit.
+    - Exemple : `(("E1", "C1"), ("E3", "C2"), ("E5", "C3"))`
+
+### Objectifs
+
+#### A. Vue Complète des Étudiants avec Leurs Cours Inscrits
+
+Pour obtenir une vue complète qui inclut à la fois les étudiants inscrits à des cours et ceux sans inscription, nous utilisons `fullOuterJoin`. Cette opération nous permet de voir les correspondances directes entre les étudiants et leurs cours, ainsi que les cas où un étudiant n'a pas de cours inscrits ou un cours n'a pas d'étudiants inscrits.
+
+```scala
+val resultatFullOuterJoin = rddEtudiants.fullOuterJoin(rddInscriptions)
+```
+
+**Résultat attendu :**
+
+Ce résultat fournira un RDD montrant pour chaque ID étudiant, le nom de l'étudiant et l'ID du cours inscrit, y compris les étudiants sans cours (`None` pour le cours) et un cours sans étudiant inscrit (`None` pour l'étudiant).
+
+```scala
+[("E1", ("Alice", Some("C1"))), ("E2", ("Bob", None)), ("E3", ("Charlie", Some("C2"))), ("E4", ("Diana", None)), ("E5", (None, Some("C3")))]
+```
+
+#### B. Regroupement pour Identifier les Étudiants Sans Inscription et les Inscriptions Sans Étudiant
+
+Pour regrouper les informations par ID étudiant et identifier les étudiants sans inscription ainsi que les inscriptions sans étudiant correspondant, nous utilisons `cogroup`.
+
+```scala
+val resultatCoGroup = rddEtudiants.cogroup(rddInscriptions)
+```
+
+**Résultat attendu :**
+
+Ce résultat produira un RDD où chaque ID étudiant est associé à deux `Iterable` : l'un pour les noms (potentiellement vide) et l'autre pour les IDs de cours (également potentiellement vide), permettant une analyse détaillée des inscriptions.
+
+```scala
+[("E1", (["Alice"], ["C1"])), ("E2", (["Bob"], [])), ("E3", (["Charlie"], ["C2"])), ("E4", (["Diana"], [])), ("E5", ([], ["C3"]))]
+```
+
+Cet exemple montre clairement comment `cogroup` permet de regrouper toutes les valeurs associées à chaque clé (dans ce cas, l'ID étudiant), ce qui est idéal pour des analyses plus complexes où chaque aspect des données associées est important, comme identifier les étudiants sans cours et les cours sans étudiants inscrits.
+
+### Conclusion
+
+Ce guide complet explore `fullOuterJoin` et `cogroup` dans Apache Spark, mettant en évidence leur utilité dans des scénarios pratiques tels que l'analyse des inscriptions universitaires. En comprenant ces opérations et les types de données associés (`CompactBuffer`, `Some`, `Iterable`), les développeurs peuvent optimiser la performance et l'utilisation de la mémoire dans leurs applications Spark, assurant une gestion efficace des données distribuées à grande échelle.
+
+
+
+
 ## Conclusion
 
-`fullOuterJoin` et `cogroup
-
-` servent des objectifs différents dans le traitement des données distribuées avec Spark, offrant flexibilité et puissance pour le traitement de données à grande échelle. La compréhension des types `CompactBuffer`, `Some`, et `Iterable` est également essentielle pour optimiser les performances et l'efficacité de la mémoire dans vos applications Spark. Ce guide fournit une base solide pour explorer ces opérations et types de données, enrichissant votre arsenal de développement Spark.
+`fullOuterJoin` et `cogroup` servent des objectifs différents dans le traitement des données distribuées avec Spark, offrant flexibilité et puissance pour le traitement de données à grande échelle. La compréhension des types `CompactBuffer`, `Some`, et `Iterable` est également essentielle pour optimiser les performances et l'efficacité de la mémoire dans vos applications Spark. Ce guide fournit une base solide pour explorer ces opérations et types de données, enrichissant votre arsenal de développement Spark.
 
 Ce guide complet vise à fournir une compréhension profonde des opérations `fullOuterJoin` et `cogroup` dans Apache Spark, ainsi que des types de données clés et de leur impact sur la performance et l'utilisation de la mémoire, soutenu par des exemples pratiques pour illustrer leur utilisation dans des scénarios réels. Pour des informations plus détaillées, la documentation officielle de Spark reste une ressource inestimable.
