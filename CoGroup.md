@@ -79,7 +79,7 @@ Dans une université, nous avons deux ensembles de données : les étudiants et 
 
 Je m'excuse pour l'omission. Permettez-moi de compléter l'exemple pratique avec les détails manquants.
 
-## Exemple Pratique : Scénario Universitaire (Complété)
+## Suite de l'exemple Pratique : Scénario Universitaire (Complété)
 
 ### Contexte
 
