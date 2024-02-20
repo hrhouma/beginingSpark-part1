@@ -62,3 +62,7 @@ Expliquez comment Spark effectue le calcul sur deux nœuds et différencie les o
 Assurez-vous d'avoir une instance Spark fonctionnelle et d'avoir initialisé SparkContext avant de commencer l'exercice #8. Utilisez les opérations RDD de Spark pour accomplir les tâches demandées et pour manipuler les données. Bonne chance et
 
  amusez-vous bien à explorer les données avec Spark !
+
+ ## Références :
+https://github.com/hrhouma/beginingSpark-part1/blob/main/CoGroupePartie1.md
+https://github.com/hrhouma/beginingSpark-part1/blob/main/CoGroupePartie2.md
