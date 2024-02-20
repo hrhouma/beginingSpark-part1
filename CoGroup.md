@@ -1,4 +1,13 @@
-Dans Apache Spark, deux opérations essentielles pour le traitement de données distribuées sont `fullOuterJoin` et `cogroup`. Chacune a des applications spécifiques, des implications sur la performance et l'utilisation de la mémoire. Voici une analyse concise et cohérente de ces opérations basée sur les exemples fournis :
+Dans Apache Spark, deux opérations essentielles pour le traitement de données distribuées sont `fullOuterJoin` et `cogroup`. Chacune a des applications spécifiques, des implications sur la performance et l'utilisation de la mémoire. 
+Voici une comparaison entre les deux opérations :
+
+val rdd4 = sc.parallelize( Array(("A","1"),("B","2"), ("C","3"), ("D","4") ))
+val rdd6 = sc.parallelize( Array(("A","a"),("C","c")))
+
+rdd4.fullOuterJoin(rdd6).collect ==> res126: Array[(String, (Option[String], Option[String]))] = Array((A,(Some(1),Some(a))), (B,(Some(2),None)), (C,(Some(3),Some(c))), (D,(Some(4),None)))
+
+rdd4.cogroup(rdd6).collect ==> res127: Array[(String, (Iterable[String], Iterable[String]))] = Array((A,(CompactBuffer(1),CompactBuffer(a))), (B,(CompactBuffer(2),CompactBuffer())), (C,(CompactBuffer(3),CompactBuffer(c))), (D,(CompactBuffer(4),CompactBuffer())))
+
 
 ### FullOuterJoin
 
