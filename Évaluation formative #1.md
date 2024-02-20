@@ -64,5 +64,7 @@ Assurez-vous d'avoir une instance Spark fonctionnelle et d'avoir initialisé Spa
  amusez-vous bien à explorer les données avec Spark !
 
  ## Références :
-https://github.com/hrhouma/beginingSpark-part1/blob/main/CoGroupePartie1.md
+**1 :** https://github.com/hrhouma/beginingSpark-part1/blob/main/CoGroupePartie1.md
+
+**2 :**
 https://github.com/hrhouma/beginingSpark-part1/blob/main/CoGroupePartie2.md
