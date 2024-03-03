@@ -68,6 +68,3 @@ Choisissez un traitement analytique à effectuer sur les données de revenu, en 
 - Utilisez les ressources en ligne et la documentation officielle de Spark pour résoudre les problèmes ou pour rechercher des fonctions spécifiques.
 
 Ce document vous guide à travers les étapes de réalisation de l'évaluation, en mettant l'accent sur la manipulation des données et l'analyse à l'aide de Spark SQL. Bonne chance!
-```
-
-Ce README.md fournit une vue d'ensemble complète et détaillée de l'évaluation, guidant l'utilisateur à travers les objectifs, les étapes nécessaires pour accomplir les tâches, et
