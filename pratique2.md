@@ -83,9 +83,13 @@ rdd4.fullOuterJoin(rdd6).collect
 rdd4.cogroup(rdd6).collect
 ```
 
-Différences:
+# Différences:
 - La méthode `cogroup` retourne un résultat de type `Array[(String, (Iterable[String], Iterable[String]))]`, où chaque élément du tableau est une paire (clé, (liste de valeurs de rdd4, liste de valeurs de rdd6)).
 - La méthode `fullOuterJoin` retourne un résultat de type `Array[(String, (Option[String], Option[String]))]`, où chaque élément du tableau est une paire (clé, (valeur de rdd4, valeur de rdd6)), avec les valeurs de rdd4 et rdd6 enveloppées dans des Options pour gérer les valeurs manquantes.
-```
 
+# Conclusion
 Dans cette pratique, nous avons exploré diverses opérations sur les RDD (Resilient Distributed Datasets) dans Apache Spark, notamment les transformations, les actions et les jointures. Les exemples fournis illustrent comment utiliser ces opérations pour manipuler des données distribuées de manière efficace.
+
+# Références :
+https://github.com/hrhouma/beginingSpark-part1/blob/main/CoGroupPartie1.md
+https://github.com/hrhouma/beginingSpark-part1/blob/main/CoGroupePartie2.md
