@@ -1,5 +1,4 @@
-Je comprends mieux votre demande maintenant. Voici une structure révisée et concise pour les objectifs de chaque partie de votre tutoriel Scala pour Apache Spark, reflétant les thèmes que vous avez spécifiés :
-
+# Table de matières
 ### 1. Opérations de Base avec Spark
 - Objectif: Découvrir les fonctionnalités fondamentales de Spark, y compris la création et la manipulation basique des RDD.
 
