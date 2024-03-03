@@ -6,6 +6,8 @@ Ce tutoriel vous montrera comment convertir un RDD en DataFrame, puis en Dataset
 
 Ce guide pas à pas vous montrera comment convertir un RDD en DataFrame, puis en Dataset en utilisant Apache Spark. Nous utiliserons Scala pour les exemples.
 
+spark-shell
+======= 
 ## Partie 1: Conversion d'un RDD en DataFrame
 
 ### Étape 1: Importer les classes nécessaires
@@ -88,8 +90,8 @@ ds.show()
 
 ## Partie 2 - en partant de pyspark
 
-Bien sûr, voici les commandes pour transformer un RDD en DataFrame, puis en DataSet dans PySpark :
-
+pyspark
+======= 
 ### Transformer un RDD en DataFrame :
 
 1. **Création d'une session Spark** :
