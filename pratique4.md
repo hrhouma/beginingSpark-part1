@@ -128,6 +128,23 @@ Lancez `spark-shell` en incluant le chemin du connecteur JDBC pour PostgreSQL :
 spark-shell --driver-class-path C:\path\to\postgresql-42.5.0.jar --jars C:\path\to\postgresql-42.5.0.jar
 ```
 
+### exemple
+```shell
+spark-shell 
+ --driver-class-path C:\SPARKHADOOP\spark-3.3.0-bin-hadoop3\jars\postgresql-42.5.0.jar
+ --jars C:\SPARKHADOOP\spark-3.3.0-bin-hadoop3\jars\postgresql-42.5.0.jar
+```
+```shell
+spark-shell --driver-class-path C:\SPARKHADOOP\spark-3.3.0-bin-hadoop3\jars\postgresql-42.5.0.jar --jars C:\SPARKHADOOP\spark-3.3.0-bin-hadoop3\jars\postgresql-42.5.0.jar
+```
+```scala
+val jdbcDF = spark.read.format("jdbc").
+     | option("url","jdbc:postgresql://127.0.0.1/postgres").
+     | option("dbtable","public.personnes").
+     | option("user","postgres").
+     | option("password","postgres").
+     | load
+```
 Lisez les données de la table `personnes` avec SparkSQL :
 
 ```scala
