@@ -1,4 +1,3 @@
-```markdown
 # SPARK SQL
 
 ## PARTIE 1 AVEC SCALA - RDD => DataFrame => DataFrame SQL (SPARK SQL)
