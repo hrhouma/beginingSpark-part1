@@ -137,8 +137,3 @@ Ce document fournit une correction exhaustive de l'évaluation formative en dét
 - [Documentation officielle Apache Spark](https://spark.apache.org/docs/latest/)
 - [ScalaProject sur GitHub](https://github.com/brahmbhattspandan/ScalaProject/tree/master/data/stocks)
 - [Vidéo YouTube sur Market Stock Analysis](https://www.youtube.com/watch?v=Mxw6QZk1CMY)
-
-Ce README a pour but de guider pas à pas à travers les différents aspects de l'évaluation formative, en mettant l'accent sur la manipulation et l'analyse des données à l'aide d'Apache Spark et Spark SQL.
-```
-
-Cette version détaillée du README inclut des instructions précises, des exemples de code, et des explications pour chaque étape de l'évaluation formative, assurant une compréhension approfondie et exhaustive de l'exercice proposé.
