@@ -8,9 +8,11 @@ LECTURE D'UN FICHIER + ACTION COLLECT
 ### (Section 01/15) 2 façons de créer des RDDS
 
 #### 1ère méthode pour créer un RDD
+
 ```scala
 val rdd1 = sc.textFile("test.txt")
 rdd1.collect
+```
 ```
 
 Avec un fichier plus volumineux 4300-0.txt
