@@ -53,6 +53,10 @@ ssc.start()
 ```bash
 ncat -lk 9988
 ```
+ou
+```bash
+nc -lk 9988 
+```
 
 📝 **Note :** C'est ici que vous pouvez écrire les mots qui seront ensuite traités par votre application Spark Streaming. Chaque ligne que vous entrez sera envoyée à Spark, qui comptera les mots en temps réel.
 
