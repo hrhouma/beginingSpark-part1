@@ -182,7 +182,7 @@ Supposons que vous ayez un fichier JSON `employees.json` contenant les données 
 Chargement et manipulation du fichier JSON :
 
 ```scala
-val employeesDF = spark.read.json("path/to/employees.json")
+val employeesDF = spark.read.json("employees.json")
 
 // Afficher le schéma pour comprendre la structure des données
 employeesDF.printSchema()
@@ -208,7 +208,7 @@ id,department,location
 Chargement et manipulation du fichier CSV :
 
 ```scala
-val departmentsDF = spark.read.option("header", "true").csv("path/to/departments.csv")
+val departmentsDF = spark.read.option("header", "true").csv("departments.csv")
 
 // Jointure entre employeesDF et departmentsDF pour obtenir la localisation de chaque employé
 val joinedDF = employeesDF.join(departmentsDF, "department")
@@ -247,7 +247,3 @@ employeesDS.filter(_.department == "IT").show()
 ```
 
 Les Datasets offrent une interface fluide pour la manipulation de données typées tout en bénéficiant des optimisations Catalyst et Tungsten de Spark.
-
----
-
-Ces exemples fournissent une base solide pour explorer des manipulations avancées et des fonctionnalités de SparkSQL et Spark Datasets, offrant une transition douce vers des opérations plus complexes et des optimisations de performances.
