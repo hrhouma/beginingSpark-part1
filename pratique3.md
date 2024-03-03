@@ -1,7 +1,7 @@
 # SPARK SQL
 
 ## PARTIE 1 AVEC SCALA 
-#### RDD => DataFrame => DataFrame SQL (SPARK SQL)
+### RDD => DataFrame => DataFrame SQL (SPARK SQL)
 
 Utilisez `spark-shell`
 
@@ -14,7 +14,8 @@ val dataframeSQL = spark.sql("select * from personnes")
 dataframeSQL.show
 ```
 
-## PARTIE 2 AVEC PYSPARK - RDD => DataFrame => DataFrame SQL (SPARK SQL)
+## PARTIE 2 AVEC PYSPARK 
+### RDD => DataFrame => DataFrame SQL (SPARK SQL)
 
 Utilisez GOOGLE COLAB OU NOTEBOOK DATABRICKS
 
