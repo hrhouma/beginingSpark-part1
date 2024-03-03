@@ -42,9 +42,6 @@ spark.sql("select * from personnes where id= 1").show()
 ## PARTIE 3 - SUITE SPARK SQL
 
 ```scala
-//QUESTION : 1-C'EST QUOI PYSPARK-SPARK SQL ET C'EST QUOI LE LANGAGE NATIF DE SPARK
-//2-RDD VS DATASET VS DATAFRAME (COMPARAISON ET FONCTIONS DE TRANSFORMATIONS)
-
 val rdd = sc.parallelize(List((1,"toto","yoyo"),(2,"titi","jiji"),(3,"tata","gogo"),(4,"tutu","nono")))
 val dataframe = rdd.toDF("id","nom","prenom")
 dataframe.show()
@@ -57,4 +54,7 @@ spark.sql("select count(*) from personnes").show()
 spark.sql("select * from personnes order by nom asc").show()
 spark.sql("select * from personnes order by nom desc").show()
 ```
+## Questions : 
 
+1. Quelle est la différence entre PySpark et Spark SQL, et quel est le langage natif utilisé par Spark ?
+2. Pouvez-vous comparer les RDD, les DataFrames et les DataSets dans Spark en termes de fonctionnalités et de transformations disponibles ?
