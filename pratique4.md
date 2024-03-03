@@ -164,16 +164,94 @@ jdbcDF.select("age", "cp").distinct().show()
 ```
 ---
 
-## Partie 05 - Plus sur les DataFrames avec SparkSQL
-
-Approfondissement sur les manipulations avancées des DataFrames avec SparkSQL.
+Pour enrichir votre tutoriel Scala pour Apache Spark, je vais élaborer sur les parties 5 et 6, incluant des exemples pratiques avec des fichiers JSON ou CSV pour les manipulations avancées des DataFrames ainsi qu'une introduction aux Datasets.
 
 ---
+
+## Partie 05 - Plus sur les DataFrames avec SparkSQL
+
+Dans cette section, nous explorerons des manipulations avancées des DataFrames en utilisant SparkSQL, telles que les jointures, les agrégations, et les fonctions de fenêtrage.
+
+### Exemple avec un fichier JSON
+
+Supposons que vous ayez un fichier JSON `employees.json` contenant les données suivantes :
+
+```json
+{"id":1,"name":"John Doe","department":"Finance","salary":3000}
+{"id":2,"name":"Jane Smith","department":"IT","salary":4000}
+{"id":3,"name":"Jake Brown","department":"IT","salary":3500}
+{"id":4,"name":"Claire White","department":"HR","salary":2500}
+```
+
+Chargement et manipulation du fichier JSON :
+
+```scala
+val employeesDF = spark.read.json("path/to/employees.json")
+
+// Afficher le schéma pour comprendre la structure des données
+employeesDF.printSchema()
+
+// Sélectionner les employés du département IT avec un salaire supérieur à 3500
+employeesDF.filter($"department" === "IT" && $"salary" > 3500).show()
+
+// Calculer le salaire moyen par département
+employeesDF.groupBy("department").avg("salary").show()
+```
+
+### Exemple avec un fichier CSV
+
+Imaginons maintenant un fichier CSV `departments.csv` contenant les informations suivantes :
+
+```csv
+id,department,location
+1,Finance,New York
+2,IT,San Francisco
+3,HR,London
+```
+
+Chargement et manipulation du fichier CSV :
+
+```scala
+val departmentsDF = spark.read.option("header", "true").csv("path/to/departments.csv")
+
+// Jointure entre employeesDF et departmentsDF pour obtenir la localisation de chaque employé
+val joinedDF = employeesDF.join(departmentsDF, "department")
+joinedDF.select("name", "department", "location").show()
+```
 
 ## Partie 06 - Les Datasets
 
-Introduction aux Datasets, une abstraction optimisée et typée sur les DataFrames.
+Les Datasets sont une abstraction optimisée et typée sur les DataFrames qui offrent les avantages de la vérification de type au moment de la compilation et de la performance d'exécution. Ils sont particulièrement utiles lorsque vous avez besoin de manipuler des données avec des types de données complexes et personnalisés.
+
+### Création d'un Dataset
+
+Imaginons que vous disposiez d'une classe case `Employee` :
+
+```scala
+case class Employee(id: Long, name: String, department: String, salary: Long)
+```
+
+Vous pouvez créer un Dataset à partir d'une séquence d'objets `Employee` :
+
+```scala
+val employeesSeq = Seq(
+  Employee(1, "John Doe", "Finance", 3000),
+  Employee(2, "Jane Smith", "IT", 4000),
+  Employee(3, "Jake Brown", "IT", 3500),
+  Employee(4, "Claire White", "HR", 2500)
+)
+
+val employeesDS = employeesSeq.toDS()
+
+// Afficher le Dataset
+employeesDS.show()
+
+// Filtrer les employés du département IT
+employeesDS.filter(_.department == "IT").show()
+```
+
+Les Datasets offrent une interface fluide pour la manipulation de données typées tout en bénéficiant des optimisations Catalyst et Tungsten de Spark.
 
 ---
 
-Assurez-vous de remplacer les chemins et configurations spécifiques par ceux correspondant à votre environnement de travail.
+Ces exemples fournissent une base solide pour explorer des manipulations avancées et des fonctionnalités de SparkSQL et Spark Datasets, offrant une transition douce vers des opérations plus complexes et des optimisations de performances.
