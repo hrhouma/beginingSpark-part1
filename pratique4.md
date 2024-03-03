@@ -164,10 +164,6 @@ jdbcDF.select("age", "cp").distinct().show()
 ```
 ---
 
-Pour enrichir votre tutoriel Scala pour Apache Spark, je vais élaborer sur les parties 5 et 6, incluant des exemples pratiques avec des fichiers JSON ou CSV pour les manipulations avancées des DataFrames ainsi qu'une introduction aux Datasets.
-
----
-
 ## Partie 05 - Plus sur les DataFrames avec SparkSQL
 
 Dans cette section, nous explorerons des manipulations avancées des DataFrames en utilisant SparkSQL, telles que les jointures, les agrégations, et les fonctions de fenêtrage.
