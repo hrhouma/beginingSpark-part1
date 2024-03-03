@@ -101,6 +101,10 @@ Ouvrez un autre terminal et utilisez `ncat` pour écouter sur le port `9999` et 
 ncat -lk 9999
 ```
 
+Vous pouvez tester ces mots : 
+
+love trump media war obama Arianna Huffington usa canada president religion racism white 
+
 Dans ce terminal, vous pouvez maintenant taper des tweets et appuyer sur Entrée pour les envoyer au script `sentiment_analysis.py` pour l'analyse.
 
 ## Conclusion
