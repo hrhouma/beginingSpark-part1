@@ -67,13 +67,7 @@ spark-shell --driver-class-path C:\path\to\postgresql-42.5.0.jar --jars C:\path\
 val jdbcDF = spark.read.format("jdbc").option("url","jdbc:postgresql://127.0.0.1/postgres").option("dbtable","public.personnes").option("user","postgres").option("password","postgres").load()
 jdbcDF.printSchema()
 ```
-## Exemple
-
-Je m'excuse pour l'omission. Voici la section corrigée pour l'intégration avec les systèmes de gestion de base de données relationnelle (SGBDR), spécifiquement PostgreSQL, dans le tutoriel :
-
----
-
-## Partie 04 - SparkSQL avec les SGBDR (PostgreSQL)
+## Exemple détaillé - suite de la partie 04 - SparkSQL avec les SGBDR (PostgreSQL)
 
 Pour utiliser SparkSQL avec PostgreSQL, vous devez suivre ces étapes :
 
@@ -97,10 +91,27 @@ CREATE TABLE personnes (
 Insérez quelques données dans la table `personnes` :
 
 ```sql
-INSERT INTO personnes VALUES (1, 'Louis', 'Martin', 20, 31000);
-INSERT INTO personnes VALUES (2, 'Hernandez', 'Martha', 20, 31000);
-INSERT INTO personnes VALUES (3, 'Abdelali', 'Salim', 20, 31000);
-...
+INSERT INTO personnes VALUES (1, 'Smith', 'John', 20, 31000);
+INSERT INTO personnes VALUES (2, 'Johnson', 'Emma', 25, 31000);
+INSERT INTO personnes VALUES (3, 'Williams', 'Olivia', 30, 31000);
+INSERT INTO personnes VALUES (4, 'Brown', 'Noah', 35, 31000);
+INSERT INTO personnes VALUES (5, 'Jones', 'Liam', 40, 31000);
+INSERT INTO personnes VALUES (6, 'Garcia', 'Sophia', 20, 32000);
+INSERT INTO personnes VALUES (7, 'Miller', 'Ava', 25, 32000);
+INSERT INTO personnes VALUES (8, 'Davis', 'Isabella', 30, 32000);
+INSERT INTO personnes VALUES (9, 'Rodriguez', 'Mia', 35, 32000);
+INSERT INTO personnes VALUES (10, 'Martinez', 'Ethan', 40, 32000);
+INSERT INTO personnes VALUES (11, 'Hernandez', 'Alexander', 22, 33000);
+INSERT INTO personnes VALUES (12, 'Lopez', 'Charlotte', 27, 33000);
+INSERT INTO personnes VALUES (13, 'Wilson', 'Amelia', 32, 33000);
+INSERT INTO personnes VALUES (14, 'Anderson', 'Harper', 37, 33000);
+INSERT INTO personnes VALUES (15, 'Thomas', 'Evelyn', 42, 33000);
+INSERT INTO personnes VALUES (16, 'Taylor', 'Abigail', 47, 34000);
+INSERT INTO personnes VALUES (17, 'Moore', 'Emily', 52, 34000);
+INSERT INTO personnes VALUES (18, 'Jackson', 'Elizabeth', 57, 34000);
+INSERT INTO personnes VALUES (19, 'Martin', 'Sofia', 62, 34000);
+INSERT INTO personnes VALUES (20, 'Lee', 'Avery', 67, 34000);
+
 ```
 
 Pour sélectionner et vérifier les données :
