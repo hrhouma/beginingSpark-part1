@@ -1,6 +1,4 @@
-Pour rendre le tutoriel plus interactif et visuellement attrayant pour vos étudiants, voici quelques suggestions de décoration et d'organisation du contenu. L'idée est de rendre l'apprentissage plus engageant et plus accessible.
-
-### Tutoriel Apache Spark Streaming avec Décorations
+### Apache Spark Streaming 
 
 ---
 
@@ -24,7 +22,7 @@ Avant de commencer, assurez-vous d'avoir :
 #### 🔹 **Terminal 1: Configuration de Spark Streaming**
 
 ```scala
-// 🌈 Importations magiques pour commencer
+// 🌟 Importations pour commencer
 import org.apache.spark._
 import org.apache.spark.streaming._
 
@@ -60,13 +58,32 @@ ncat -lk 9988
 
 ---
 
-### 🎨 Conseils de Décoration
+### 🎨 Résumé
 
-- **Utilisez des Emoji :** Ils ajoutent de la couleur et de l'expression à vos instructions, rendant le tutoriel plus attrayant.
-- **Mise en Forme Markdown :** Utilisez le gras, l'italique, et les titres pour structurer votre contenu. Cela aide à guider les étudiants à travers les différentes sections.
-- **Captures d'Écran et Diagrammes :** Si possible, incluez des visuels pour illustrer les concepts ou les étapes. Une image vaut mille mots.
-- **Boîtes et Cadres Colorés :** Utilisez des boîtes de texte colorées (si votre plateforme le permet) pour mettre en évidence des conseils, des notes, ou des avertissements.
+# 🔹 **Terminal 1: EProgramme scala**
 
----
+```scala
+import org.apache.spark._
+import org.apache.spark.streaming._
+val ssc = new StreamingContext(sc, Seconds(3))
+val lines = ssc.socketTextStream("localhost", 9988)
+val words = lines.flatMap(_.split(" "))
+// Count each word in each batch
+val pairs = words.map(word => (word, 1))
+val wordCounts = pairs.reduceByKey(_ + _)
+wordCounts.print()
+// Start the computation
+ssc.start()
+```
+# 🔹 **Terminal 2: Envoi de Données avec Netcat**
 
-Ces embellissements et cette structure aideront à rendre votre tutoriel non seulement plus informatif mais aussi plus captivant et mémorable pour vos étudiants. Bon enseignement ! 🌈🚀
+```bash
+ncat -lk 9988
+```
+ou
+```bash
+nc -lk 9988 
+```
+
+
+Bon travail ! 🚀
