@@ -65,7 +65,7 @@ nc -lk 9988
 
 ### 🎨 Résumé
 
-# 🔹 **Terminal 1: EProgramme scala**
+# 🔹 **Terminal 1: Programme scala**
 
 ```scala
 import org.apache.spark._
