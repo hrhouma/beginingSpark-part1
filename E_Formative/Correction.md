@@ -1,4 +1,3 @@
-```markdown
 # Correction Détaillée: Évaluation Formative avec Apache Spark et Spark SQL
 
 Ce document fournit une correction détaillée de l'évaluation formative portant sur l'analyse de données à l'aide d'Apache Spark et Spark SQL. Nous couvrirons deux parties principales: l'analyse de données boursières (`AAPL.csv`) et l'analyse de données de revenu (`income.csv`).
