@@ -40,8 +40,6 @@ val schema = StructType(Seq(
 val df = spark.createDataFrame(rdd.map(row => Row.fromTuple(row)), schema)
 ```
 
-## Partie 2: Conversion du DataFrame en Dataset
-
 ### Étape 6: Définir une classe pour représenter les données
 ```scala
 case class Person(ID: Int, Name: String, Age: Int)
@@ -86,7 +84,6 @@ case class Person(ID: Int, Name: String, Age: Int)
 import org.apache.spark.sql.Dataset
 val ds: Dataset[Person] = df.as[Person]
 ds.show()
-```
 ```
 
 ## Partie 2 - en partant de pyspark
