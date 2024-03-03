@@ -2,46 +2,94 @@
 
 Ce tutoriel vous montrera comment convertir un RDD en DataFrame, puis en Dataset en utilisant Apache Spark.
 
-## Partie 1
+```markdown
+# Convertir un RDD en DataFrame puis en Dataset avec Spark
 
-1. **Importez les classes nécessaires :**
+Ce guide pas à pas vous montrera comment convertir un RDD en DataFrame, puis en Dataset en utilisant Apache Spark. Nous utiliserons Scala pour les exemples.
+
+## Partie 1: Conversion d'un RDD en DataFrame
+
+### Étape 1: Importer les classes nécessaires
 ```scala
-import org.apache.spark.sql.{Encoder, Encoders}
+import org.apache.spark.sql.{SparkSession, Row}
+import org.apache.spark.sql.types._
 ```
 
-2. **Définissez la classe `Person` :**
+### Étape 2: Initialiser une session Spark
+```scala
+val spark = SparkSession.builder()
+                        .appName("RDD to DataFrame")
+                        .getOrCreate()
+```
+
+### Étape 3: Créer un RDD
+```scala
+val rdd = sc.parallelize(Seq((1, "Alice", 25), (2, "Bob", 30), (3, "Charlie", 35)))
+```
+
+### Étape 4: Définir le schéma du DataFrame
+```scala
+val schema = StructType(Seq(
+  StructField("ID", IntegerType, nullable = false),
+  StructField("Name", StringType, nullable = false),
+  StructField("Age", IntegerType, nullable = false)
+))
+```
+
+### Étape 5: Créer le DataFrame à partir du RDD et du schéma
+```scala
+val df = spark.createDataFrame(rdd.map(row => Row.fromTuple(row)), schema)
+```
+
+## Partie 2: Conversion du DataFrame en Dataset
+
+### Étape 6: Définir une classe pour représenter les données
 ```scala
 case class Person(ID: Int, Name: String, Age: Int)
 ```
 
-3. **Convertissez le DataFrame en Dataset :**
+### Étape 7: Importer les classes nécessaires pour les encoders
+```scala
+import org.apache.spark.sql.{Encoder, Encoders}
+```
+
+### Étape 8: Convertir le DataFrame en Dataset
 ```scala
 val ds: Dataset[Person] = df.as[Person]
 ```
 
-4. **Affichez le Dataset :**
+## Partie 3: Affichage du Dataset
+
+### Étape 9: Afficher le contenu du Dataset
 ```scala
 ds.show()
 ```
-
-## Exemple complet en Scala
-
+# Résumé des commandes
 ```scala
-// Import des classes nécessaires
-import org.apache.spark.sql.{Encoder, Encoders}
+import org.apache.spark.sql.{SparkSession, Row}
+import org.apache.spark.sql.types._
 
-// Définition de la classe Person
+val spark = SparkSession.builder()
+                        .appName("RDD to DataFrame")
+                        .getOrCreate()
+
+val rdd = sc.parallelize(Seq((1, "Alice", 25), (2, "Bob", 30), (3, "Charlie", 35)))
+val schema = StructType(Seq(
+  StructField("ID", IntegerType, nullable = false),
+  StructField("Name", StringType, nullable = false),
+  StructField("Age", IntegerType, nullable = false)
+))
+val df = spark.createDataFrame(rdd.map(row => Row.fromTuple(row)), schema)
+
+import org.apache.spark.sql.{Encoder, Encoders}
 case class Person(ID: Int, Name: String, Age: Int)
 
-// Convertir DataFrame en Dataset
-val ds: Dataset[Person] = df.as[Person]
-
-// Import de la classe Dataset
 import org.apache.spark.sql.Dataset
-
-// Afficher le Dataset
+val ds: Dataset[Person] = df.as[Person]
 ds.show()
 ```
+```
+
 ## Partie 2 - en partant de pyspark
 
 Bien sûr, voici les commandes pour transformer un RDD en DataFrame, puis en DataSet dans PySpark :
