@@ -1,4 +1,3 @@
-```markdown
 # PRATIQUE 1 - RDD ET TRANSFORMATIONS, ACTIONS DE BASE
 
 ## NOUS MANIPULONS DES RDD
@@ -12,7 +11,6 @@ LECTURE D'UN FICHIER + ACTION COLLECT
 ```scala
 val rdd1 = sc.textFile("test.txt")
 rdd1.collect
-```
 ```
 
 Avec un fichier plus volumineux 4300-0.txt
