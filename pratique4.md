@@ -24,7 +24,7 @@ Chargement et manipulation du fichier JSON avec Scala :
 ```scala
 import org.apache.spark.sql.SQLContext
 val sqlContext = new SQLContext(sc)
-val dataframe = sqlContext.read.format("json").option("inferSchema","true").load("C:/Users/Loic/Desktop/SPARK/people.json")
+val dataframe = sqlContext.read.format("json").option("inferSchema","true").load("C:/people.json")
 dataframe.createOrReplaceTempView("people")
 dataframe.printSchema()
 spark.sql("SELECT * FROM people")
@@ -39,7 +39,7 @@ Chargement et manipulation du fichier CSV avec Scala :
 ```scala
 import org.apache.spark.sql.SQLContext
 val sqlContext = new SQLContext(sc)
-val dataframe = sqlContext.read.format("csv").option("header","true").option("inferSchema","true").load("C:/Users/Loic/Desktop/SPARK/titanic.csv")
+val dataframe = sqlContext.read.format("csv").option("header","true").option("inferSchema","true").load("C:/titanic.csv")
 dataframe.printSchema()
 dataframe.createOrReplaceTempView("titanic")
 spark.sql("SELECT name, age FROM titanic").show()
@@ -53,7 +53,7 @@ Exemple de conversion d'un DataFrame en RDD, puis manipulation de celui-ci :
 ```scala
 import org.apache.spark.sql.SQLContext
 val sqlContext = new SQLContext(sc)
-val df = sqlContext.read.format("csv").option("header","true").option("inferSchema","true").load("C:/Users/Loic/Desktop/SPARK/titanic.csv")
+val df = sqlContext.read.format("csv").option("header","true").option("inferSchema","true").load("C:/titanic.csv")
 val dfToRdd = df.rdd
 ```
 
