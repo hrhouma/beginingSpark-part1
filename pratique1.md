@@ -223,4 +223,3 @@ Pouvez-vous expliquer comment Spark effectue le calcul sur deux nœuds et diffé
 Ainsi, fold est particulièrement adapté aux opérations où l'association des résultats intermédiaires sur chaque nœud est possible, ce qui peut conduire à une meilleure performance dans certaines situations par rapport à reduce.
 
 Est-ce vrai ?
-```
