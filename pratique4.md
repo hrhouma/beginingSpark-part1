@@ -67,7 +67,73 @@ spark-shell --driver-class-path C:\path\to\postgresql-42.5.0.jar --jars C:\path\
 val jdbcDF = spark.read.format("jdbc").option("url","jdbc:postgresql://127.0.0.1/postgres").option("dbtable","public.personnes").option("user","postgres").option("password","postgres").load()
 jdbcDF.printSchema()
 ```
+## Exemple
 
+Je m'excuse pour l'omission. Voici la section corrigée pour l'intégration avec les systèmes de gestion de base de données relationnelle (SGBDR), spécifiquement PostgreSQL, dans le tutoriel :
+
+---
+
+## Partie 04 - SparkSQL avec les SGBDR (PostgreSQL)
+
+Pour utiliser SparkSQL avec PostgreSQL, vous devez suivre ces étapes :
+
+1. Téléchargez et installez PostgreSQL pour Windows à partir de [EnterpriseDB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
+2. Téléchargez le connecteur JDBC pour PostgreSQL à partir de [jdbc.postgresql.org](https://jdbc.postgresql.org/download/).
+
+### Configuration de la base de données
+
+Créez une table `personnes` dans PostgreSQL avec la structure suivante :
+
+```sql
+CREATE TABLE personnes (
+  id INTEGER, 
+  nom CHARACTER VARYING(255), 
+  prenom CHARACTER VARYING(255),
+  age INTEGER,
+  cp INTEGER
+);
+```
+
+Insérez quelques données dans la table `personnes` :
+
+```sql
+INSERT INTO personnes VALUES (1, 'Louis', 'Martin', 20, 31000);
+INSERT INTO personnes VALUES (2, 'Hernandez', 'Martha', 20, 31000);
+INSERT INTO personnes VALUES (3, 'Abdelali', 'Salim', 20, 31000);
+...
+```
+
+Pour sélectionner et vérifier les données :
+
+```sql
+SELECT * FROM public.personnes;
+```
+
+### Configuration de Spark pour utiliser PostgreSQL
+
+Lancez `spark-shell` en incluant le chemin du connecteur JDBC pour PostgreSQL :
+
+```scala
+spark-shell --driver-class-path C:\path\to\postgresql-42.5.0.jar --jars C:\path\to\postgresql-42.5.0.jar
+```
+
+Lisez les données de la table `personnes` avec SparkSQL :
+
+```scala
+val jdbcDF = spark.read
+  .format("jdbc")
+  .option("url", "jdbc:postgresql://127.0.0.1/postgres")
+  .option("dbtable", "public.personnes")
+  .option("user", "postgres")
+  .option("password", "postgres")
+  .load()
+
+jdbcDF.printSchema()
+jdbcDF.show()
+
+// Exemples de manipulations DataFrame
+jdbcDF.select("age", "cp").distinct().show()
+```
 ---
 
 ## Partie 05 - Plus sur les DataFrames avec SparkSQL
