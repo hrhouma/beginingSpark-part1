@@ -1,4 +1,3 @@
-```markdown
 # EVALUATION: Analyse de Données avec Apache Spark SQL
 
 Ce document décrit les étapes et les exigences pour l'évaluation formative axée sur l'analyse de données financières et de revenus à l'aide d'Apache Spark SQL. L'évaluation est divisée en deux parties principales, traitant respectivement des données boursières et des données de revenu.
