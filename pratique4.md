@@ -1,4 +1,4 @@
-# Tutoriel Scala pour Apache Spark
+# Pratique 4 Scala pour Apache Spark
 
 ## Table des matières
 
