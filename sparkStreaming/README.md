@@ -1,4 +1,4 @@
-# Introduction à Spark et Spark Streaming
+# Introduction à Spark et Spark Streaming (1/4)
 
 Spark Streaming est un composant de la suite Apache Spark qui permet le traitement de flux de données en temps réel. Il est conçu pour être facile à utiliser, tout en étant suffisamment puissant pour gérer des analyses complexes en temps réel. Voici un aperçu complet et détaillé de Spark Streaming.
 
@@ -71,7 +71,7 @@ L'architecture de Spark Streaming est conçue pour s'intégrer de manière trans
 ### Conclusion
 
 Spark Streaming est une solution puissante pour le traitement de flux de données en temps réel, offrant une intégration étroite avec l'écosystème Spark et permettant une analyse complexe des données en direct. Bien qu'il y ait des défis et des limitations, pour de nombreuses applications, c'est une plateforme incontournable pour le traitement de données en temps réel à grande échelle.
-# Résumé
+# Résumé (2/4)
 Spark Streaming est un composant de la suite Apache Spark qui permet de traiter des flux de données en temps réel. Il est conçu pour intégrer facilement des sources de données telles que Kafka, Flume, Twitter, et bien d'autres, et supporter des charges de données volumineuses en continu tout en étant résilient aux pannes.
 
 Voici les concepts clés de Spark Streaming :
@@ -92,7 +92,7 @@ Le traitement par fenêtre, en particulier, est crucial pour des tâches telles 
 
 En résumé, Spark Streaming est un outil robuste pour le traitement en temps réel des données distribuées, offrant à la fois la simplicité de la programmation et la puissance de traitement nécessaires pour des applications de big data exigeantes.
 
-# Compétiteurs et Alternatives de Spark Streaming
+# Compétiteurs et Alternatives de Spark Streaming (3/4)
 
 Apache Spark Streaming est un outil puissant pour le traitement de données en flux continu (streaming), mais il existe plusieurs autres technologies dans ce domaine qui peuvent être considérées comme des alternatives ou des concurrents, en fonction des besoins spécifiques de traitement des données en temps réel. Voici quelques-unes des plus notables :
 
@@ -130,7 +130,7 @@ Apache Spark Streaming est un outil puissant pour le traitement de données en f
 
 Chacune de ces technologies a ses forces et ses faiblesses, et le choix dépendra de nombreux facteurs, y compris mais sans s'y limiter à la latence, le débit, la facilité d'utilisation, la robustesse, l'écosystème, et le coût. Certaines sont des plateformes open-source que l'on peut déployer sur n'importe quel cloud ou sur site, tandis que d'autres sont des services de cloud gérés qui offrent une intégration étroite avec d'autres services et une gestion simplifiée.
 
-# Est-ce que Spark-streaming est la même chose que Kafka ?
+# Est-ce que Spark-streaming est la même chose que Kafka ? (4/4)
 
 Apache Kafka et Apache Spark Streaming sont deux technologies différentes mais souvent complémentaires dans l'écosystème du traitement de données en temps réel. Voici les principales différences entre elles :
 
