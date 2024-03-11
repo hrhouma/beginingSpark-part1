@@ -1,5 +1,5 @@
 # 📘 Table des Matières
-
+---
 ### 🚀 **Pratique 1 : Introduction à PySpark**
 - **Démarrez avec PySpark !** Apprenez à installer PySpark, à initialiser `SparkContext` et à charger votre premier fichier texte. Explorez les possibilités de traitement de données avec Spark.
 
@@ -19,8 +19,10 @@
 
 Ces pratiques vous offrent une vue d'ensemble solide pour commencer à travailler avec PySpark, de la manipulation basique des données à des analyses plus complexes en utilisant Spark SQL.
 
-# Résumé 
+---
 
+# Résumé 
+---
 # 📘 Table des Matières
 
 ### 🚀 **Pratique 1 : Les Bases de PySpark**
@@ -35,8 +37,10 @@ Ces pratiques vous offrent une vue d'ensemble solide pour commencer à travaille
 ### 📊 **Pratique 4 : Analyse de Marché avec Spark SQL**
 - **Analysez !** Exploration de Spark SQL pour analyser les données du marché boursier et visualisation des résultats.
 
-# English version
 
+---
+# English version
+---
 # 📝 README.md
 
 ## 🚀 **Introduction**
