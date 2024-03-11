@@ -1,16 +1,5 @@
-# Formation Scala et Big Data
-
-Ce dépôt contient les matériaux et les exercices pratiques pour la formation sur Scala et Big Data, couvrant une variété de techniques et de plateformes.
-
-## Structure du Cours
-
-- `0-docker`: Contient des instructions et des configurations nécessaires pour établir un environnement Docker adéquat pour les exercices.
-- `1-pratiques SCALA partie1 (7 pratiques)`: Sept exercices pour se familiariser avec les bases de Scala.
-- `2-pratiques PYSPARK (3 pratiques)`: Trois exercices centrés sur l'utilisation de PySpark pour le traitement de données à grande échelle.
-- `3-évaluation formative 1 SCALA - map - flatMap`: Exercices d'évaluation sur les fonctions `map` et `flatMap` en Scala.
-- `4-évaluation formative 2 SCALA - DS - cours historiques pour les actions AAPL`: Étude de cas sur l'analyse de séries temporelles des actions Apple (AAPL) en utilisant Scala.
-- `5-évaluation formative 3 SCALA - spark Streaming`: Exercices sur l'utilisation de Spark Streaming en Scala.
-- `6-pratiques SCALA partie2 (7 pratiques)`: Sept exercices avancés pour approfondir vos connaissances en Scala.
+# Lien des projets 
+https://drive.google.com/drive/folders/1tzz-p6nJvsONw5tBLNIXKSgFqkH0rVLl?usp=sharing
 
 ## PROJET (Évaluations)
 
