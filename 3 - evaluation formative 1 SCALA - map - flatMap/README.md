@@ -61,6 +61,4 @@ Cette pratique s'appelle le **chaining** ou la composition de fonctions. En prog
   
 - **Question 2 :** `fullOuterJoin` retourne un RDD contenant toutes les paires clé-valeur avec des clés apparaissant dans les deux RDDs, tandis que `cogroup` regroupe les valeurs de chaque RDD séparément.
 
-**Conseil :** Assurez-vous d'avoir initialisé `SparkContext` avant de commencer l'exercice #8 et amusez-vous bien à explorer les données avec Spark
-
- !
+**Conseil :** Assurez-vous d'avoir initialisé `SparkContext` avant de commencer l'exercice #8 et amusez-vous bien à explorer les données avec Spark !
