@@ -1,12 +1,15 @@
 # Avis Important aux Étudiants
 
-## Préparation au Quiz de Scala
+# LIEN DU QUIZ 👀
+https://forms.office.com/r/Luhu8FUFJX 
+
+## Préparation au Quiz de Scala 👨‍🎓
 
 Chers étudiants,
 
 Ce quiz est particulièrement important car il constitue **30% de votre note finale**. 
 
-### Documents de Révision
+### Documents de Révision 🥇
 
 Pour vous assurer la meilleure préparation, vous devez lire attentivement les documents suivants disponibles sur notre dépôt GitHub :
 
@@ -18,7 +21,7 @@ Pour vous assurer la meilleure préparation, vous devez lire attentivement les d
 
 Ces documents constituent la base nécessaire pour aborder les questions du quiz et sont essentiels pour une compréhension approfondie des sujets reliés à la programmation fonctionnelle avec un langauge comme SCALA.
 
-### Instructions pour le Quiz
+### Instructions pour le Quiz 🚴
 
 Voici comment procéder pour le quiz :
 
