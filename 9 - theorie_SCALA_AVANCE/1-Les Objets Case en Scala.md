@@ -1,4 +1,4 @@
-# Les Objets Case en Scala
+# 1 - Théorie et cours sur les Objets Case en Scala
 
 ## Introduction
 
@@ -50,7 +50,7 @@ def greeting(person: Person): String = person match {
 - Leur immuabilité peut être restrictive dans certains contextes où une modification d'état est nécessaire.
 - De plus, l'utilisation excessive d'objets `case` pour de grandes structures de données peut augmenter l'empreinte mémoire.
 
-# Exemple pratique 
+# 2 - Exemple pratique 
 
 Pour illustrer l'utilisation des objets `case` en Scala, nous allons créer un exemple complet qui met en œuvre un petit programme de gestion des employés dans une entreprise. Cet exemple démontrera comment définir des objets `case`, utiliser le pattern matching, et manipuler une liste d'employés.
 
@@ -119,7 +119,7 @@ object EmployeeManagement extends App {
 }
 ```
 
-### Explication détaillée
+# 3 - Explication détaillée de l'exemple précédent
 
 Cet exemple montre comment les objets `case` facilitent la modélisation et la manipulation de données en Scala. Nous avons vu comment utiliser le pattern matching pour effectuer des opérations conditionnelles sur des collections d'objets `case`, et comment manipuler ces objets de manière immuable avec `copy`. Les objets `case` rendent le code plus lisible, expressif, et sécurisé en encourageant l'immutabilité et en fournissant des fonctionnalités utiles automatiquement.
 Ce programme Scala illustre un système simple de gestion des employés dans une entreprise. Il utilise les objets `case` pour modéliser les employés, démontrant leur utilité dans la définition de structures de données immuables, le pattern matching, et les opérations sur des collections. Le programme permet de filtrer les employés par département, d'afficher des informations sur eux, et d'appliquer une augmentation de salaire à un groupe spécifique d'employés. Voici un détail des composantes principales du programme et des concepts de Scala utilisés :
@@ -185,7 +185,7 @@ object EmployeeManagement extends App {
 
 Globalement, ce programme démontre la puissance et la flexibilité des objets `case` en Scala pour manipuler des données de manière fonctionnelle et immuable, en utilisant des concepts comme le pattern matching et les opérations sur les collections.
 
-## Conclusion
+# 4 - Conclusion
 
 - Les objets `case` en Scala offrent un moyen puissant et expressif de modéliser des données immuables et de les manipuler à travers le pattern matching. Ils sont un pilier de la programmation fonctionnelle en Scala, simplifiant la définition de classes de données et favorisant des pratiques de programmation sûres et expressives. Comme pour tout outil, leur utilisation doit être équilibrée avec les besoins spécifiques du projet et les caractéristiques du domaine d'application.
 
