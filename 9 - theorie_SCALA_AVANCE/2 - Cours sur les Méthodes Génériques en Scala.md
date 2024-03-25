@@ -179,7 +179,37 @@ println(updatedDepartment) // Department(IT,210000.0)
 
 Cet exemple illustre la puissance de la programmation générique en Scala, permettant de créer des opérations réutilisables et type-safe qui peuvent travailler avec divers types de données.
 
+# 4 - Annexe 2 - type-safe ?
+
+Le terme "type-safe" ou "sûreté de type" désigne une propriété fondamentale de certains langages de programmation qui vise à prévenir ou à réduire les erreurs liées à la manipulation des types de données. Dans un langage de programmation type-safe, le compilateur ou l'environnement d'exécution assure que les opérations sont réalisées sur des données de types compatibles, minimisant ainsi les risques d'erreurs à l'exécution.
+
+### Signification et Importance de la Sûreté de Type
+
+- **Contrôles à la Compilation** : Dans les langages type-safe, beaucoup d'erreurs potentielles liées au type sont détectées lors de la compilation. Cela signifie que le code qui compile est, dans une large mesure, garanti d'être libre de certains types d'erreurs d'exécution qui résultent d'une mauvaise manipulation des types.
+  
+- **Prévention des Comportements Imprévisibles** : En s'assurant que les opérations sur les données sont effectuées avec des types appropriés, la sûreté de type aide à prévenir des comportements imprévisibles qui peuvent résulter de conversions de types incorrectes ou inattendues, comme accéder à un emplacement mémoire non valide.
+  
+- **Facilitation du Raisonnement sur le Code** : Quand un langage est type-safe, cela facilite le raisonnement sur le code, car le développeur peut avoir confiance dans les types des données qu'il manipule. Cela réduit le besoin de vérifications de type manuelles et de conversions explicites de type dans le code, rendant le code plus lisible et maintenable.
+
+### Exemples de Sûreté de Type
+
+- **Contrôle de Type Statique** : Scala, comme beaucoup de langages fortement typés, effectue un contrôle de type statique, où les types sont vérifiés à la compilation. Par exemple, tenter d'additionner un entier (`Int`) et une chaîne de caractères (`String`) entraînera une erreur de compilation.
+
+- **Inférence de Type** : Scala et d'autres langages modernes utilisent l'inférence de type pour déduire automatiquement les types de certaines expressions, réduisant ainsi la nécessité pour le développeur de spécifier explicitement les types. Cela maintient la sûreté de type tout en allégeant la syntaxe.
+
+- **Génériques** : Les fonctionnalités génériques, comme illustrées dans l'exemple précédent avec `increaseAmount[T]`, permettent de créer des fonctions et des structures de données qui peuvent opérer de manière sûre sur divers types, tant que ces types respectent certaines contraintes. Cela augmente la réutilisabilité du code sans sacrifier la sûreté de type.
+
+### Limitations et Considérations
+
+- **Performance** : Parfois, les vérifications de type, surtout si elles sont effectuées dynamiquement à l'exécution, peuvent introduire un surcoût en termes de performance. Cependant, dans les langages à typage statique comme Scala, la plupart de ces vérifications sont effectuées à la compilation.
+
+- **Complexité** : Pour les langages très type-safe avec des systèmes de types avancés, il peut y avoir une courbe d'apprentissage plus raide et une complexité accrue du code, notamment avec l'utilisation intensive de génériques et de types abstraits.
+
+- En résumé, la sûreté de type est un aspect crucial de la conception de langages de programmation modernes, offrant un équilibre entre la flexibilité du code et la prévention des erreurs.
+- Elle joue un rôle essentiel dans le développement de logiciels fiables et maintenables.
 
 ### Conclusion
 
-Les méthodes génériques sont une partie essentielle de la programmation en Scala, offrant une flexibilité et une réutilisabilité du code grâce à l'abstraction des types. La capacité à travailler avec des types génériques rend Scala particulièrement puissant pour la création de bibliothèques et de frameworks, où la généralité et la réutilisabilité sont clés. En comprenant et en utilisant des méthodes génériques, vous pouvez écrire des codes plus expressifs et plus robustes.
+- Les méthodes génériques sont une partie essentielle de la programmation en Scala, offrant une flexibilité et une réutilisabilité du code grâce à l'abstraction des types.
+- La capacité à travailler avec des types génériques rend Scala particulièrement puissant pour la création de bibliothèques et de frameworks, où la généralité et la réutilisabilité sont clés.
+- En comprenant et en utilisant des méthodes génériques, vous pouvez écrire des codes plus expressifs et plus robustes.
