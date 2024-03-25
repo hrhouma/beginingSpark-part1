@@ -16,7 +16,7 @@ Pour vous assurer la meilleure préparation, vous devez lire attentivement les d
 - `4 - Concepts Option-Implicit-Lazy-Singletons.md`
 - `5 - Type-safe ?.md`
 
-Ces documents constituent la base nécessaire pour aborder les questions du quiz et sont essentiels pour une compréhension approfondie des sujets que nous avons explorés jusqu'à présent.
+Ces documents constituent la base nécessaire pour aborder les questions du quiz et sont essentiels pour une compréhension approfondie des sujets reliés à la programmation fonctionnelle avec un langauge comme SCALA.
 
 ### Instructions pour le Quiz
 
