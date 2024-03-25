@@ -1,4 +1,4 @@
-# 1 - Théorie - Cours sur les Méthodes Génériques en Scala
+# 1 - Théorie - Les Méthodes Génériques en Scala
 
 Les méthodes génériques sont un outil puissant en Scala, permettant de créer des fonctions et des méthodes qui peuvent opérer sur des types de données variés. Cette capacité est essentielle pour écrire du code réutilisable et flexible. Dans ce cours, nous allons explorer comment définir et utiliser des méthodes génériques en Scala, en mettant l'accent sur la syntaxe et les concepts clés.
 
