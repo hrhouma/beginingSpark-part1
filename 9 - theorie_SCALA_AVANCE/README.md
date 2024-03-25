@@ -5,7 +5,7 @@ https://forms.office.com/r/Luhu8FUFJX
 
 ## Préparation au Quiz de Scala 👨‍🎓
 
-Chers étudiants,
+Cher.e.s étudiant.e.s,
 
 Ce quiz est particulièrement important car il constitue **30% de votre note finale**. 
 
