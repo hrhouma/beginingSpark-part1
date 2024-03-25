@@ -105,6 +105,6 @@ L'adoption de la programmation fonctionnelle en Scala dans vos projets peut non 
 ## 4. Utilisation de Monades en Scala
    - Les monades jouent un rôle central dans la gestion du flux de contrôle et des effets secondaires en programmation fonctionnelle. Expliquez ce qu'est une monade en utilisant `Option` comme exemple en Scala. Comment `Option` peut-elle aider à gérer les valeurs nulles dans un programme?
 
-Ces questions exigent des réponses approfondies qui peuvent tester la compréhension des étudiants sur les principes théoriques tout en évaluant leur capacité à appliquer ces principes dans des contextes pratiques.
+# ⚠️ Ces questions exigent des réponses avec des exemples pratiques ⚠️
 
 
