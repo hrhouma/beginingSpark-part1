@@ -183,4 +183,43 @@ Imaginons un scénario où une entreprise souhaite surveiller en temps réel les
 
 Avec ce système, l'entreprise peut désormais réagir rapidement aux avis négatifs, ajuster sa stratégie produit et marketing, et améliorer l'expérience client de manière proactive.
 
+# Scénario 2 
+
+Imaginons que vous êtes un ingénieur de données travaillant pour une firme de trading. Vous devez concevoir et mettre en œuvre une pipeline de streaming en temps réel pour extraire les données de marché des actions, de l'Ethereum et du Bitcoin à partir d'une API boursière et construire des tableaux de bord qui surveillent ces actifs en temps réel.
+
+**Résumé du Projet :**
+- **But du projet** : Créer un système capable de capturer en continu et d'analyser les données de marché pour les actions et les cryptomonnaies en temps réel.
+- **Utilisateurs finaux** : Les traders, analystes financiers et gestionnaires de fonds qui ont besoin de suivre les mouvements du marché instantanément pour prendre des décisions éclairées.
+
+**Mise en Œuvre :**
+
+1. **Ingestion des Données avec Apache NiFi** :
+    - Vous utilisez **Apache NiFi** pour ingérer les données des stocks en temps réel depuis l'API boursière. NiFi collecte les données, les traite pour assurer qu'elles sont dans le format requis et les transfère vers le système de base de données.
+
+2. **Stockage des Données dans MySQL** :
+    - Les données sont stockées dans une base de données **MySQL**. Cette base sert de système central pour conserver toutes les informations de marché que vous collectez.
+
+3. **Capture de Données de Changement avec Debezium** :
+    - Pour capturer et diffuser les modifications en temps réel de votre base de données, vous mettez en place **Debezium**. C'est un outil de CDC qui surveille la base de données MySQL et envoie chaque événement de modification (insertion, mise à jour, suppression) à un sujet Kafka dans Amazon MSK (Managed Streaming for Apache Kafka).
+
+4. **Traitement des Flux avec Spark Streaming** :
+    - **Spark Streaming** prend les données de marché brutes du sujet Kafka et les transforme. Cela pourrait inclure le nettoyage des données, le calcul de nouvelles métriques (comme les moyennes mobiles), ou l'enrichissement des données avec d'autres sources.
+
+5. **Chargement dans la Base de Données Glue** :
+    - Une fois transformées, les données sont chargées dans une base de données **AWS Glue**. Glue est un service ETL managé et sert ici comme une couche d'entrepôt de données analytiques.
+
+6. **Requêtes et Tableaux de Bord avec Athena, Power BI et Tableau** :
+    - Pour l'analyse et la visualisation, vous utilisez **Amazon Athena** pour interroger les données dans la base de données Glue.
+    - Les résultats sont ensuite utilisés pour alimenter des tableaux de bord en temps réel dans **Power BI** et **Tableau**, des outils de visualisation de données qui permettent aux utilisateurs finaux d'observer et d'analyser les tendances du marché.
+
+7. **Orchestration avec Airflow** :
+    - Pour coordonner l'ensemble du flux de données, de l'ingestion à l'analyse, vous utilisez **Airflow**. Airflow est une plateforme d'orchestration qui vous permet de programmer, planifier et surveiller tous les processus de votre pipeline.
+
+**Scénario d'Utilisation :**
+- Un trader ouvre son tableau de bord et voit une fluctuation importante sur le Bitcoin. La pipeline a capturé cette donnée, l'a traitée et mise à disposition en quelques secondes.
+- L'analyste financier, en observant les tableaux de bord, détecte une corrélation entre les actions d'une entreprise technologique et l'Ethereum. Il utilise cette information pour conseiller sur les futures positions à prendre.
+- Le gestionnaire de fonds surveille la performance globale du portefeuille d'investissement et repère une opportunité basée sur les données en temps réel fournies par le pipeline.
+
+Ce pipeline assure une visibilité immédiate sur les marchés financiers et permet à la firme de trading de réagir rapidement aux opportunités et aux risques potentiels.
+
 
