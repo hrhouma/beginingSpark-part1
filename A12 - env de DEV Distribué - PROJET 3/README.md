@@ -151,4 +151,36 @@ Voici comment les différentes parties du diagramme interagissent :
 
 Dans l'ensemble, ce système est conçu pour traiter de grandes quantités de données en temps réel, de leur collecte initiale à l'analyse finale. Il permet aux utilisateurs de voir des informations actualisées, de prendre des décisions basées sur les données, et d'automatiser les processus qui nécessitent une compréhension des données en constante évolution.
 
+# 4 - Scénario 1 
+
+Imaginons un scénario où une entreprise souhaite surveiller en temps réel les avis des clients sur ses produits à partir de différentes sources en ligne, les analyser pour en tirer des insights et réagir rapidement aux retours négatifs.
+
+1. **Collecte des Avis via FastAPI sur Amazon EC2** :
+    - Un **développeur** crée une API avec FastAPI qui permet de recueillir les avis des clients envoyés depuis l'application mobile de l'entreprise.
+    - L'API est déployée sur un serveur Amazon EC2, et NGINX est utilisé pour gérer les requêtes entrantes, garantissant que le système peut gérer de nombreux avis simultanément sans ralentissement.
+
+2. **Conteneurisation avec Docker sur Ubuntu** :
+    - Le **développeur d'infrastructures** configure Docker sur une machine Ubuntu pour que l'API FastAPI et d'autres services associés puissent être déployés dans des conteneurs, assurant la portabilité et l'indépendance du système d'exploitation.
+
+3. **Flux de Données avec Kafka et Debezium** :
+    - Chaque fois qu'un avis est ajouté à la base de données PostgreSQL, **Debezium** détecte ce changement et envoie un message à **Kafka**.
+    - Kafka s'occupe de la gestion de ces messages qui représentent des avis, garantissant qu'ils sont traités efficacement et sans perte de données.
+
+4. **Gestion des Données avec Apache NiFi** :
+    - **NiFi**, configuré par l'ingénieur de données, récupère les avis depuis Kafka, les transforme si nécessaire (par exemple, en éliminant les informations personnelles pour respecter la confidentialité), et les transmet pour stockage ou analyse supplémentaire.
+
+5. **Stockage de Données dans Amazon S3** :
+    - Les avis traités sont ensuite stockés de manière sécurisée et durable dans **Amazon S3** par un script Python, où ils peuvent être récupérés et analysés à tout moment.
+
+6. **Extraction de Données avec un Crawler** :
+    - Parallèlement, un **Crawler** configuré par l'ingénieur de données extrait des avis sur les produits de l'entreprise à partir de sites web tiers pour obtenir une vue complète de l'opinion des clients sur le web.
+
+7. **Préparation des Données avec AWS Glue** :
+    - **AWS Glue** est utilisé pour cataloguer et préparer toutes les données collectées, les avis de l'application mobile et ceux du Crawler, pour l'analyse.
+
+8. **Analyse des Données avec Amazon Athena** :
+    - Un analyste de données utilise **Amazon Athena** pour exécuter des requêtes sur les données stockées dans S3, permettant d'obtenir rapidement des insights sur les tendances des avis des clients, les problèmes de produits récurrents, ou les points forts à promouvoir.
+
+Avec ce système, l'entreprise peut désormais réagir rapidement aux avis négatifs, ajuster sa stratégie produit et marketing, et améliorer l'expérience client de manière proactive.
+
 
