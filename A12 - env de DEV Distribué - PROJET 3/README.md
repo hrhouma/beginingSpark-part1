@@ -1,6 +1,6 @@
 # 1 -  PARTIE 1 - Architecture du Projet de Streaming de Données
 
-Ce document présente l'architecture d'un projet de streaming de données conçu pour capturer, traiter et analyser des données en temps réel.
+Ce document présente l'architecture de notre projet de streaming de données conçu pour capturer, traiter et analyser des données en temps réel.
 
 ![image](https://github.com/hrhouma/beginingSpark-part1/assets/10111526/608923e4-0551-493a-b632-6a047fed0e70)
 
