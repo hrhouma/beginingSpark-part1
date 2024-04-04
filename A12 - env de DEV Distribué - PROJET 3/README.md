@@ -1,4 +1,4 @@
-# PARTIE 1 - Architecture du Projet de Streaming de Données
+# 1-  PARTIE 1 - Architecture du Projet de Streaming de Données
 
 Ce document présente l'architecture d'un projet de streaming de données conçu pour capturer, traiter et analyser des données en temps réel.
 
@@ -81,7 +81,7 @@ Le diagramme d'architecture illustre une configuration robuste pour une applicat
 L'architecture fournit une solution complète pour la capture, le traitement, le streaming, le stockage et l'analyse des données en temps réel. Chaque composant joue un rôle crucial, et des alternatives sont disponibles en fonction des besoins spécifiques ou des préférences de l'équipe de développement ou des exigences du projet.
 
 
-# PARTIE 2 - Workflow 
+# 2 - PARTIE 2 - Workflow 
 
 ![image](https://github.com/hrhouma/beginingSpark-part1/assets/10111526/608923e4-0551-493a-b632-6a047fed0e70)
 
@@ -117,7 +117,7 @@ Le workflow illustré dans l'image représente un système de traitement et d'an
 
 En résumé, le système décrit est un pipeline de données complet, depuis la collecte de données par l'API FastAPI, la capture de modifications avec Debezium, le traitement et le routage avec Kafka et NiFi, le stockage sur S3, suivi par l'extraction avec un crawler, et finalement l'analyse avec AWS Glue et Athena. Ce type de système est typique dans les scénarios de big data où la vitesse, la flexibilité et l'évolutivité sont cruciales.
 
-# PARTIE 3 - Autres descriptions  - Décomposition du workflow étape par étape et expliquation de chaque composant et son rôle dans le système proposé
+# 3 - PARTIE 3 - Autres descriptions  - Décomposition du workflow étape par étape et expliquation de chaque composant et son rôle dans le système proposé
 
 Voici comment les différentes parties du diagramme interagissent :
 
