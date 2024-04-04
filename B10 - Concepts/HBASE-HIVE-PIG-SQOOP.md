@@ -1,1 +1,2 @@
-https://drive.google.com/drive/folders/1YD3-nMgTdoJ22b27QLzUThil3b9cvpP4?usp=sharing
+- https://drive.google.com/drive/folders/1YD3-nMgTdoJ22b27QLzUThil3b9cvpP4?usp=sharing
+- https://github.com/hrhouma/BIGDATA-filescsv-serde-projethive-scripts?tab=readme-ov-file
