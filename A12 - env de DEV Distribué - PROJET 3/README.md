@@ -61,7 +61,7 @@ Le diagramme d'architecture illustre une configuration robuste pour une applicat
 ### Crawler
 
 - **Rôle** : Extraction de données.
-- **Description** : Le Crawler est probablement une application ou un script personnalisé qui extrait des données de diverses sources pour les traiter.
+- **Description** : Le Crawler extrait des données de diverses sources pour les traiter.
 - **Alternatives** : Scrapy, Apache Nutch, Octoparse.
 
 ### Amazon Athena
@@ -100,7 +100,7 @@ Le workflow illustré dans l'image représente un système de traitement et d'an
     - **Intégration de données**: Apache NiFi utilise ces données et peut les transformer ou les acheminer vers d'autres systèmes.
 
 4. **Scripting avec Python**:
-    - **Automatisation**: Un script Python est probablement utilisé pour automatiser certaines tâches ou traiter les données avant qu'elles ne soient envoyées à un service de stockage tel qu'Amazon S3.
+    - **Automatisation**: Un script Python est utilisé pour automatiser certaines tâches ou traiter les données avant qu'elles ne soient envoyées à un service de stockage tel qu'Amazon S3.
 
 5. **Stockage de données dans Amazon S3**:
     - **Archivage**: Les données transformées ou extraites sont stockées dans Amazon S3, un service de stockage d'objets hautement scalable et durable.
