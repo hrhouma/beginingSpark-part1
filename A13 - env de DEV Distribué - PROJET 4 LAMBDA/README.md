@@ -24,28 +24,28 @@ Tous les codes nécessaires pour ce projet sont fournis. Assurez-vous d'avoir le
 
 ## Aperçu du Tutoriel
 Voici ce que nous couvrirons :
-00:00 – Introduction au projet
-01:07 – Aperçu des services AWS et de l'architecture de l'application
-01:56 – Commencer de zéro : concevoir l'application web
-02:28 – Configuration requise pour suivre
-03:02 – Création et hébergement d'une page web pour l'application
-03:37 – Construction d'une page `index.html` de zéro
-04:09 – Accès au code pour le tutoriel
-04:27 – Utilisation d'AWS Amplify pour le déploiement et l'hébergement
-06:14 – Implémentation des calculs mathématiques dans l'application web
-06:56 – Création d'une fonction Lambda Python pour les opérations mathématiques
-08:44 – Test de la fonction Lambda
-10:21 – Invocation de la fonction Lambda
-10:54 – Configuration d'une API REST avec API Gateway
-14:53 – Persistance des résultats dans DynamoDB et gestion des permissions
-15:44 – Création d'une table DynamoDB pour le stockage des résultats
-16:37 – Configuration des permissions de Lambda pour l'accès à DynamoDB
-18:23 – Mise à jour de Lambda pour écrire dans DynamoDB
-20:49 – Appel de l'API Gateway depuis la page `index.html`
-21:08 – Modification de `index.html` pour l'intégration de l'API
-23:03 – Redéploiement de la page web mise à jour avec Amplify
-23:33 – Révision de l'application web complétée
-24:32 – IMPORTANT : Comment supprimer vos ressources AWS pour éviter des frais inutiles
+- 00:00 – Introduction au projet
+- 01:07 – Aperçu des services AWS et de l'architecture de l'application
+- 01:56 – Commencer de zéro : concevoir l'application web
+- 02:28 – Configuration requise pour suivre
+- 03:02 – Création et hébergement d'une page web pour l'application
+- 03:37 – Construction d'une page `index.html` de zéro
+- 04:09 – Accès au code pour le tutoriel
+- 04:27 – Utilisation d'AWS Amplify pour le déploiement et l'hébergement
+- 06:14 – Implémentation des calculs mathématiques dans l'application web
+- 06:56 – Création d'une fonction Lambda Python pour les opérations mathématiques
+- 08:44 – Test de la fonction Lambda
+- 10:21 – Invocation de la fonction Lambda
+- 10:54 – Configuration d'une API REST avec API Gateway
+- 14:53 – Persistance des résultats dans DynamoDB et gestion des permissions
+- 15:44 – Création d'une table DynamoDB pour le stockage des résultats
+- 16:37 – Configuration des permissions de Lambda pour l'accès à DynamoDB
+- 18:23 – Mise à jour de Lambda pour écrire dans DynamoDB
+- 20:49 – Appel de l'API Gateway depuis la page `index.html`
+- 21:08 – Modification de `index.html` pour l'intégration de l'API
+- 23:03 – Redéploiement de la page web mise à jour avec Amplify
+- 23:33 – Révision de l'application web complétée
+- 24:32 – IMPORTANT : Comment supprimer vos ressources AWS pour éviter des frais inutiles
 
 ## Ressources Supplémentaires
 Pour un projet plus complet, consultez [Projet de Portfolio AWS : Construire une Application de Bout en Bout](https://youtu.be/AUTRE_VIDEO_LIEN).
