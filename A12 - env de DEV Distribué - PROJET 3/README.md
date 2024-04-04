@@ -1,3 +1,7 @@
+Références : 
+- https://github.com/hrhouma/projet2-Stock_streaming_pipeline_project-main
+- https://github.com/hrhouma/projet1-dataStreaming-main
+
 # 1 -  PARTIE 1 - Architecture du Projet de Streaming de Données
 
 Ce document présente l'architecture de notre projet de streaming de données conçu pour capturer, traiter et analyser des données en temps réel.
