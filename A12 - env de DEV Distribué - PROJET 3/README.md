@@ -8,8 +8,6 @@ Ce document présente l'architecture d'un projet de streaming de données conçu
 
 Le diagramme d'architecture illustre une configuration robuste pour une application de streaming de données. Elle implique des services Web, la capture de données, le traitement, le streaming d'événements, le stockage de données et l'analyse.
 
-![Diagramme d'Architecture](image.png)
-
 ## Composants
 
 ### Amazon EC2 avec NGINX et FastAPI
