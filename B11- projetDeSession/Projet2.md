@@ -1,4 +1,4 @@
-**Énoncé du Projet #2: Développement d'une Pipeline de Données Complète en Temps Réel ou par Batch**
+# Énoncé du Projet #2: Développement d'une Pipeline de Données Complète en Temps Réel ou par Batch
 
 ### Objectif du Projet:
 - Le projet consiste à développer une pipeline de données complète qui peut traiter des flux de données continus (streaming) ou par lots (batch). 
