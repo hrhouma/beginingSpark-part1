@@ -1,0 +1,370 @@
+***************************************************************
+1) WHICH YEAR HAS THE MOST NO OF RATINGS
+***************************************************************
+select year(from_unixtime(rating_time)) rating_year,
+       count(*) as cnt
+from latest_ratings 
+group by year(from_unixtime(rating_time))
+order by rating_year DESC;
+   	
+	YEAR    RATING_YEAR
+ 	2018    1086549
+	2017    1973721
+	2016    2077152
+	2015    1907576
+	2014    584216
+	2013    633573
+	2012    792701
+	2011    833774
+	2010    982104
+	2009    993111
+	2008    1210356
+	2007    1095710
+	2006    1210803
+	2005    1849719
+	2004    1201656
+	2003    1079130
+	2002    910350
+	2001    1239432
+	2000    2033738
+	1999    1231173
+	1998    329704
+	1997    763929
+	1996    1733263
+	1995    4
+
+*****************************************************************
+2) TOP RATED MOVIE IN EACH YEAR
+****************************************************************
+This can be achieved by average ratings
+average ratings = Sum of ratings / count (user ID)
+ Note: 
+	* Same user might have reviewed multiple times. This is the reason user should be distinct
+	* Usually for one movie we would be asked to rate once
+	* If everyone is getting average rating as 5.0 then we have a problem. It could be that particular
+          movies would have been rated less. We might also get every rating as 5. we can have an having
+	  condition where it would be greater than 500
+        * we need to join with latest movies table to get the movie name
+        * To get the top rated movie we would be using the ranking function where ranking =1
+
+ select a.rating_year,
+       b.title, 
+       a.avg_rating 
+      from (select movie_id , 
+                   cast(sum(rating) as double)/count(distinct user_id) avg_rating , 
+                   year(from_unixtime(rating_time)) rating_year, 
+                   rank() over (partition by year(from_unixtime(rating_time)) 
+                          order by cast(sum(rating) as double)/count(distinct user_id) desc) 
+                    ranking from latest_ratings 
+                    group by movie_id, year(from_unixtime(rating_time)) 
+                    having count(distinct user_id) > 500 ) a 
+      join latest_movies b 
+      on a.movie_id = b.movie_id 
+      where a.ranking = 1 
+      order by a.rating_year;
+    
+     RATING_YEAR TITLE                    AVERAGE_RATING
+	1996    Schindler's List (1993) 	4.514696276943174
+	1997    Wallace & Gromit: The Wrong Trousers (1993)     4.5112903225806456
+	1998    Saving Private Ryan (1998)      4.480701754385965
+	1999    "Godfather           		4.544752645124392
+	2000    "Shawshank Redemption   	4.553487376979033
+	2001    "Shawshank Redemption   	4.584341906202723
+	2002    "Usual Suspects         	4.589861751152074
+	2003    "Shawshank Redemption   	4.495418448381185
+	2004    "Shawshank Redemption   	4.3772394136807815
+	2005    "Shawshank Redemption   	4.3538953621201735
+	2006    "Shawshank Redemption   	4.390079103493737
+	2007    "Shawshank Redemption   	4.396220472440945
+	2008    "Shawshank Redemption   	4.435086810054418
+	2009    "Shawshank Redemption   	4.44210722263589
+	2010    "Shawshank Redemption   	4.432236376503893
+	2011    "Shawshank Redemption   	4.45922131147541
+	2012    "Shawshank Redemption   	4.408857509627728
+	2013    "Shawshank Redemption   	4.437730287398674
+	2014    "Shawshank Redemption   	4.3894086826347305
+	2015    "Shawshank Redemption   	4.392230338677545
+	2016    "Shawshank Redemption   	4.3361185383244205
+	2017    Planet Earth (2006)     	4.4364844903988185
+	2018    "Shawshank Redemption   	4.35815356065878
+
+****************************************************************
+3) EVERY YEAR HAVING A MOVIE WHICH HAS MAX USERS
+*****************************************************************
+   * Every year for any movie id what is the max users (How many users has rated that movie in the particular year)
+   * We need every year from 1
+   * We would match the year rating with movie_id and max users with user count
+
+	create table tmp_movie_max_users_yearly 
+	as
+	select b.movie_id, 
+       		max(c.rating_year) myear, 
+       		b.max_users from 
+         	(select movie_id, 
+          	max(user_count) max_users 
+          	from ( select movie_id , year(from_unixtime(rating_time)) rating_year , 
+                 	count(distinct user_id) user_count 
+                 	from latest_ratings 
+                 group by movie_id, year(from_unixtime(rating_time))) a 
+           	 group by movie_id ) b 
+	join (select movie_id , 
+             year(from_unixtime(rating_time)) rating_year , 
+             count(distinct user_id) user_count 
+             from latest_ratings group by movie_id, 
+                  year(from_unixtime(rating_time))) c 
+	on b.movie_id = c.movie_id 
+	and b.max_users = c.user_count 
+	group by b.movie_id,b.max_users;
+        
+	MOVIE_ID MYEAR  MAX_USERS
+	193819  2018    1
+	193821  2018    3
+	193823  2018    1
+	193825  2018    1
+	193827  2018    1
+	193829  2018    1
+	193833  2018    1
+	193835  2018    1
+	193837  2018    1
+	193839  2018    1
+	193841  2018    1
+	193843  2018    1
+	193845  2018    1
+	193849  2018    2
+	193851  2018    1
+    	193853  2018    1
+	193855  2018    1
+        193857  2018    1
+        193859  2018    1
+        193861  2018    1
+
+************************************************************************************************
+4) JOIN THE TABLE WHICH HAS MAX USERS EVERY YEAR FOR A MOVIE WITH TOP RATED MOVIES IN EACH YEAR
+************************************************************************************************
+ 
+	select c.rating_year, 
+       		d.title, 
+       		c.avg_rating 
+     	from ( select a.movie_id , 
+                 cast(sum(a.rating) as double)/count(distinct a.user_id) avg_rating , 
+                 year(from_unixtime(a.rating_time)) rating_year , 
+                 rank() over (partition by year(from_unixtime(a.rating_time)) 
+                 order by cast(sum(a.rating) as double)/count(distinct a.user_id) desc) ranking 
+              from latest_ratings a 
+             	join  tmp_movie_max_users_yearly  b 
+             		on a.movie_id=b.movie_id 
+            		and year(from_unixtime(a.rating_time)) = b.myear 
+            		group by a.movie_id,year(from_unixtime(a.rating_time)) 
+            		having count(distinct a.user_id) > 100 
+           	) c 
+      join latest_movies d 
+      on c.movie_id = d.movie_id 
+      where c.ranking = 1 
+      order by c.rating_year;
+    
+  RATING_YEAR   TITLE                                           AVERAGE RATING
+ 	1996    Schindler's List (1993) 			4.514696276943174
+	1997    Star Wars: Episode IV - A New Hope (1977)       4.268936690794169
+	1998    Money Talks (1997)      			2.9597701149425286
+	1999    World of Apu, The (Apur Sansar) (1959)  	4.510989010989011
+	2000    Wallace & Gromit: A Close Shave (1995)  	4.504720406681191
+	2001    Sweet Smell of Success (1957)   		4.288135593220339
+	2002    Z (1969)        				4.175438596491228
+	2003    Europa Europa (Hitlerjunge Salomon) (1990)      4.11734693877551
+	2004    To Have and Have Not (1944)     		4.090686274509804
+	2005    Ikiru (1952)    				4.366071428571429
+	2006    Why We Fight (2005)     			4.016981132075472
+	2007    Hearts of Darkness: A Filmmakers Apocalypse (1991)      4.065934065934066
+	2008    49 Up (2005)    				4.05607476635514
+	2009    Seven Up! (1964)        			4.085987261146497
+	2010    Decalogue, The (Dekalog) (1989) 		4.208333333333333
+	2011    BURN-E (2008)   				3.9066390041493775
+	2012    The Artist (2011)       			3.928813559322034
+	2013    Game Change (2012)      			3.772277227722772
+	2014    Philomena (2013)        			3.853395061728395
+	2015    Fight Club (1999)       			4.290882315277244
+	2016    The Blue Planet (2001)  			4.328313253012048
+	2017    Planet Earth II (2016)  			4.4929292929292926
+	2018    The Godfather Trilogy: 1972-1990 (1992) 	4.343939393939394
+
+*********************************************************************************************
+   5)WHICH MOVIE HAS BEEN RATED 50% MORE AFTER 5 YEARS FROM THIER RELEASE + NEXT YEAR
+*********************************************************************************************
+     * We need to have the release date
+     * We need to have 5 years of movie data from thier release date
+
+    SD -    2005 : 10000 - 4.2   - (10/12)=.83  (4.2 * .83) =3.4986
+    Ikuri - 2005 : 6000  - 4.366 - (60/12) =.5  (4.366 * .50) =3.183
+
+    *Our target is to have a movie release date 
+     Which we need to get it from  
+     Ex : Toy Story (1995)
+          In this case it starts after the parenthesis and year is 4 character. so it would be 1995
+          
+     5.1) select substring(title, 12, 3)  from million_movies limit 10
+     5.2) select instr(title'(') from million_movies limit 10  
+        Note:This might not be the best solution as movie might have parenthesis
+        Sol: We need to write a function to find parenthesis.Take the length of the string after
+             If the length of the string is greater than 4 then we need to consider the second
+             parenthesis
+         Note:we also need to consider if there is a second bracket involved
+     5.3) select distinct 
+               case
+                    when 
+                    length(substring(title,instr(title,'(')+1,length(title))) > 5
+                    then
+                         substring(substring(title,instr(title,'(')+1,length(title)),'('+1,4)
+                    else
+                         substring(title,instr(title,'(')+1,length(title)),'('+1,4)
+                    end    
+                    from million_movies limit 10;
+        
+      5.4)select substring(title,instr(reverse(title),'(')) 
+                 from million_movies limit 10;
+      5.5)select substring(title,length(title) -instr(reverse(title), '('
+                 from million_movies limit 10
+      5.6) select substring(title,length(title) - instr(reverse(title),
+          ,'('))+2,4) release_year 
+                 from million_movies limit 10
+
+      5.7)
+	 create table latest_items 
+	 as select distinct movie_id,
+            title, 
+            case when instr(reverse(title),'(' ) = 0 
+                  then '' 
+               when    substring(title,instr((title), '(')+1,4) between 1900 and 2020 
+                  then substring(title,instr((title), '(')+1,4) 
+               when    substring(title,instr((title), '(')+1,4) not between '1900' and '2020' 
+                   and substring(title,length(title) - instr(reverse(title), '(')+2,4) 
+                   not between '1900' and '2020' 
+                   then ' ' 
+               else substring(title, length(title) - instr(reverse(title), '(')+2,4) 
+               end release_year 
+        from latest_movies; 
+	
+       MOVIE_ID TITLE                  		   MOVIE_YEAR
+	1       Toy Story (1995)        		1995
+	2       Jumanji (1995)  			1995
+	3       Grumpier Old Men (1995) 		1995
+	4       Waiting to Exhale (1995)        	1995
+	5       Father of the Bride Part II (1995)      1995
+	6       Heat (1995)     			1995
+	7       Sabrina (1995)  			1995
+	8       Tom and Huck (1995)     		1995
+	9       Sudden Death (1995)     		1995
+	10      GoldenEye (1995)        		1995
+      
+        5.8) JOIN LATEST RATINGS AND LATEST ITEMS
+  	create table tmp_movies_rel_usrs 
+  	as 
+  	select c.movie_id, 
+        	max(c.user_counts) max_user_count 
+ 	from (select a.movie_id,
+              year(from_unixtime(a.rating_time)) rating_year,
+              count(distinct a.user_id) user_counts 
+     	from latest_ratings a 
+     	join (select distinct movie_id,
+                           release_year,
+                           release_year+ 1  next_years
+                   from latest_items 
+                   where release_year > 1994
+           ) b 
+    	on a.movie_id =b.movie_id 
+    	where (year(from_unixtime(rating_time))    =b.release_year
+              or year(from_unixtime(rating_time)) =b.next_years)
+              group by a.movie_id,year(from_unixtime(a.rating_time)) 
+              having user_counts > 500
+          ) c 
+    group by c.movie_id
+   
+     MOVIE_ID  MAX_USER_COUNTS
+	4       1364
+	8       589
+	12      861
+	16      4209
+	20      1647
+	24      1755
+	28      954
+	32      11035
+	36      6071
+	44      3631
+
+
+   5.8) RATED AFTER 5 YEARS OF RELEASE
+  	create table tmp_movies_rel_later_usrs
+	as 
+     	select a.movie_id,
+              year(from_unixtime(a.rating_time)) rating_year,
+              count(distinct a.user_id) user_counts 
+     	from latest_ratings a 
+     	join (select distinct movie_id,
+                           release_year,
+                           release_year+ 5  after5Years
+                   from latest_items 
+                   where release_year > 0
+           ) b 
+    	on a.movie_id =b.movie_id 
+    	where year(from_unixtime(rating_time))    >= b.after5Years
+             group by a.movie_id,year(from_unixtime(a.rating_time));
+        
+	MOVIE_ID RATING_YEARS COUNTS
+	1079    1995    	1
+	5060    1996    	345
+	597     1996    	12410
+	541     1996    	1440
+	111     1996    	4242
+	495     1996    	139
+	595     1996    	18193
+	6918    1996    	31
+	587     1996    	12001
+	589     1996    	14519
+
+	MOVIE WHICH HAS BEEN RATED 50% MORE AFTER 5 YEARS FROM THE RELEASE
+	NOW WE NEED TO CALCULATE THE PERCENTAGE CHANGE FROM THE YEARS
+    	we NEED TO PULL OUT THE MAX CHANGES ANY YEAR
+    	WHEREVER WE FIND THE CHANGES GREATER THAN 100%
+        
+	select * from 
+          (select c.movie_id, 
+                  d.title, 
+                  c.rating_year, 
+                  c.percentage_change, 
+                  rank () over (partition by c.movie_id order by c.percentage_change desc) 
+                  ranking 
+             from (select a.movie_id, b.rating_year, 
+                  (cast((user_counts - max_user_count) as double) /max_user_count) * 100 percentage_change 
+                   from tmp_movies_rel_usrs a 
+                   join tmp_movies_rel_later_usrs b
+                      on a.movie_id = b.movie_id 
+                   where (cast((user_counts -max_user_count) as DOUBLE)/max_user_count) >=1 ) c 
+                   join latest_items d 
+                 on c.movie_id=d.movie_id ) e 
+ 	 where e.ranking =1 order by title limit 100;
+
+       MOVIE_ID TITLE                                            RATING YEAR   PERCENTAGE CHANGE     RANKING      
+	93510   21 Jump Street (2012)   				2017    178.55855855855856      1
+	7293    50 First Dates (2004)   				2016    103.66300366300368      1
+	4973    Amelie (Fabuleux destin d'Amélie Poulain, Le) (2001)    2015    183.10473815461344      1
+	2329    American History X (1998)       			2015    294.40715883668906      1
+	1917    Armageddon (1998)       				2005    142.296918767507        1
+	1784    As Good as It Gets (1997)       			2005    112.74961597542243      1
+	1517    Austin Powers: International Man of Mystery (1997)      2005    548.3535528596187       1
+	72641   Blind Side, The  (2009) 				2016    164.95132127955495      1
+	1673    Boogie Nights (1997)    				2005    302.0869565217391       1
+	6373    Bruce Almighty (2003)   				2016    115.06024096385543      1
+	88140   Captain America: The First Avenger (2011)       	2016    220.09493670886076      1
+	1552    Con Air (1997)  					2005    232.66331658291458      1
+	88163   Crazy, Stupid, Love. (2011)     			2016    107.19557195571956      1
+	91529   Dark Knight Rises, The (2012)   			2017    156.56565656565658      1
+	58559   Dark Knight, The (2008) 				2015    126.00052314935914      1
+	79091   Despicable Me (2010)    				2016    257.4074074074074       1
+	45720   Devil Wears Prada, The (2006)   			2016    129.08847184986595      1
+	99114   Django Unchained (2012) 				2017    105.44507575757575      1
+	4878    Donnie Darko (2001)     				2016    447.9859894921191       1
+
+
+        
+
+
+    
