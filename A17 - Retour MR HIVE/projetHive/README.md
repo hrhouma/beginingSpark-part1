@@ -1,5 +1,5 @@
 ```sh
-  sh (glisser le script1)
+sh (glisser le script1)
 hive -f (glisser le script 2)
 hive
 show tables
