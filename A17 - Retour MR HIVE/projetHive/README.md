@@ -167,7 +167,7 @@ Cela ajoutera "Comment ça va?" après la première ligne du fichier.
 
 Ces exemples couvrent des utilisations de base de `sed` pour le traitement de texte. Avec `sed`, tu peux effectuer des modifications très spécifiques sur des fichiers textes de manière automatique, ce qui est extrêmement utile pour le scripting et l'automatisation des tâches sur les systèmes Unix et Linux.
 
-# 3 - Autres exemples simples de la commande sed : 
+# 4 - Autres exemples simples de la commande sed : 
 
  - Voici une liste des directives couramment utilisées dans `sed` avec des exemples pour chacune.
  - Ces commandes permettent d'effectuer diverses opérations de manipulation de texte directement depuis la ligne de commande.
@@ -248,7 +248,7 @@ Ces exemples couvrent des utilisations de base de `sed` pour le traitement de te
 Ces commandes offrent une flexibilité énorme pour éditer des fichiers en batch ou en flux continu, rendant `sed` un outil indispensable pour le scripting sous Unix/Linux.
 
 
-# 3 - Liste des directives de `sed` : 
+# 5 - Liste des directives de `sed` : 
 Voici une liste des directives de `sed` :
 
 - **Substitution** : `s/motif/remplacement/flags`
@@ -272,3 +272,174 @@ Voici une liste des directives de `sed` :
 - **Multi-line Delete** : `D` (supprime jusqu'au premier retour à la ligne du pattern space)
 
 Chacune de ces commandes peut être utilisée pour effectuer des manipulations spécifiques sur le texte dans un fichier ou un flux de données.
+
+# 6 - Explication du script 2 : 
+Le script 2 est utilisé pour configurer et manipuler des tables dans Hive, un système de gestion de bases de données distribuées qui fait partie de l'écosystème Hadoop. Il inclut des opérations telles que la suppression de tables existantes, la création de nouvelles tables externes et la manipulation de types de données pour l'analyse. Voici une explication étape par étape du script :
+
+### Configuration initiale
+- `SET hive.execution.engine=tez;` : Configure Hive pour utiliser Tez comme moteur d'exécution, qui est optimisé pour une meilleure performance par rapport au moteur d'exécution MapReduce par défaut.
+
+### Suppression des tables existantes
+- `drop table if exists [table_name];` : Supprime les tables si elles existent déjà pour éviter des conflits lors de la recréation de celles-ci. Ceci est fait pour plusieurs tables catégorisées en trois ensembles de données : 100k, million, et latest.
+
+### Création de tables externes
+- **Tables 100k, million, et latest** : Chaque bloc de création de tables définie les colonnes et les types de données spécifiques, ainsi que la configuration de la délimitation des champs et des lignes. Ces tables sont déclarées comme externes, ce qui signifie que Hive ne gère pas les données elles-mêmes ; elles restent à l'emplacement spécifié dans HDFS (Hadoop Distributed File System).
+
+  - **Exemple de déclaration pour `100k_data`**:
+    ```sql
+    create external table 100k_data (
+      user_id int,
+      item_id int,
+      rating double,
+      rating_time bigint)
+    row format delimited
+    fields terminated by '\t'
+    lines terminated by '\n'
+    location '/user/cloudera/hackerday_ratings/100k/data';
+    ```
+    Cette table utilise des tabulations pour séparer les champs et des retours à la ligne pour séparer les enregistrements.
+
+### Utilisation de SERDE pour la lecture des fichiers CSV
+- **Tables latest avec SERDE** : Certaines tables utilisent un SERDE spécifique (`OpenCSVSerde`) pour interpréter correctement les fichiers CSV. SERDE est un moyen de spécifier comment Hive doit interpréter les données lors de la lecture et de l'écriture. Cela inclut la gestion des caractères spéciaux comme les guillemets et les virgules dans les données.
+
+  - **Exemple pour `latest_ratings_serde`**:
+    ```sql
+    create external table latest_ratings_serde(
+      user_id string,
+      movie_id string,
+      rating string,
+      rating_time string)
+    ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+    WITH SERDEPROPERTIES(
+      "separatorChar"= ",",
+      "quoteChar" = "\"")
+    location '/user/cloudera/hackerday_ratings/latest/ratings'
+    TBLPROPERTIES ("skip.header.line.count" = "1");
+    ```
+    Cette table ignore également la première ligne des fichiers, supposée être des en-têtes.
+
+### Recréation de tables pour l'analyse
+- **Conversion des types de données** : Après la création des tables avec des types de données de chaîne, le script les recrée en convertissant les types de données en formats plus appropriés pour l'analyse (comme `int`, `double`, etc.).
+
+  - **Exemple pour `latest_ratings`**:
+    ```sql
+    drop table if exists latest_ratings;
+    create table latest_ratings as 
+    select cast (user_id as int) user_id, 
+           cast (movie_id as int) movie_id, 
+           cast (rating as double) rating,  
+           cast (rating_time as bigint) rating_time
+    from latest_ratings_serde;
+    ```
+
+Ce script est conçu pour une configuration initiale ou une mise à jour périodique d'une base de données Hive pour des systèmes de recommandation de films, en assurant que les structures de données sont propres, à jour, et prêtes pour des requêtes d'analyse.
+
+
+# 7 - Pourquoi créer d'abord des tables SERDE externes ?
+
+- Vous vous interrogez probablement sur le processus spécifique qui consiste à créer des tables externes SERDE, puis à recréer des tables internes à partir de ces tables SERDE dans le script 2 ??? 
+- C'est effectivement une excellente question qui soulève un aspect important de la gestion des données dans les environnements de big data comme Hive.
+
+### Pourquoi créer d'abord des tables SERDE externes ?
+
+1. **Accès initial aux données** : Les tables externes SERDE sont d'abord créées pour traiter efficacement les données brutes stockées dans des fichiers CSV dans HDFS. L'utilisation de SERDE (`OpenCSVSerde` dans ce cas) permet de gérer correctement les complexités des fichiers CSV, telles que les guillemets, les virgules dans les données, et les lignes d'en-tête. Ces tables servent de point d'entrée initial pour les données non transformées.
+
+2. **Flexibilité** : Les tables externes permettent aux données de rester à leur emplacement d'origine sur HDFS. Cela signifie que Hive ne déplace pas ni ne copie les données, mais lit les données directement à partir de leur emplacement source. Cela est utile lorsque les données sont également utilisées ou gérées par d'autres systèmes en dehors de Hive.
+
+### Pourquoi ensuite créer des tables internes ?
+
+1. **Transformation et nettoyage** : Après avoir chargé les données brutes via les tables externes SERDE, le script procède à la création de nouvelles tables internes. Cela est fait pour plusieurs raisons :
+   - **Conversion de type** : Convertir les données de types génériques (`string`) à des types plus spécifiques (`int`, `double`, etc.) qui sont nécessaires pour les opérations analytiques et les performances optimales des requêtes.
+   - **Nettoyage** : Supprimer les en-têtes de fichiers, les guillemets, et autres artefacts des données CSV qui ne sont pas nécessaires pour l'analyse.
+
+2. **Optimisation** : Les tables internes permettent à Hive de mieux gérer et optimiser les données pour les requêtes, car Hive contrôle le format et la structure de stockage. Ceci est essentiel pour améliorer la performance des requêtes, en particulier avec de grands volumes de données.
+
+3. **Gestion des données** : En créant des tables internes, Hive peut gérer le cycle de vie des données, y compris la suppression des données lorsque la table est supprimée. Cela aide à maintenir un environnement propre et géré, évitant l'accumulation de données obsolètes.
+
+### Résumé de l'utilité de ce processus
+
+En bref, le processus de création de tables externes SERDE suivi par la création de tables internes est une stratégie pour gérer efficacement les données depuis leur format brut jusqu'à un format optimisé pour l'analyse. Ce processus permet de traiter les données initialement dans leur format le plus flexible et universel, puis de les transformer et de les optimiser pour une utilisation spécifique dans Hive, tout en bénéficiant des avantages de performance et de gestion des données offerts par les tables internes.
+
+# 7 - Résumé script 2 : 
+
+- Dans le script 2, il y a deux types principaux de tables utilisées dans Hive : des tables externes et des tables internes.
+- La logique derrière leur utilisation ainsi que la sérialisation et le type de données peut sembler complexe, mais je vais vous expliquer cela de manière simplifiée.
+
+### Pourquoi utiliser des tables externes?
+
+**Tables externes** :
+- Les tables externes dans Hive sont utilisées quand les données doivent rester à l'emplacement spécifié dans le système de fichiers HDFS (Hadoop Distributed File System) et ne doivent pas être déplacées ni supprimées lorsque la table est supprimée dans Hive. 
+- Cela est particulièrement utile pour des données qui sont partagées entre différents systèmes ou pour des données qui sont mises à jour ou gérées en dehors de Hive.
+- Un autre avantage est que si vous supprimez la table externe, les données elles-mêmes ne sont pas supprimées, ce qui réduit le risque de perdre des informations importantes.
+
+**Exemple d'utilisation** :
+Supposons que vous ayez des fichiers de données qui sont régulièrement mis à jour ou utilisés par plusieurs applications différentes. En les configurant comme des tables externes, vous vous assurez que les manipulations dans Hive n'affectent pas l'intégrité ou l'emplacement des données originales.
+
+### Pourquoi remplacer des tables externes par des tables internes?
+
+**Tables internes (ou gérées)** :
+- Les tables internes sont utiles quand Hive doit avoir un contrôle complet sur les données, y compris leur stockage et gestion du cycle de vie. Lorsque vous supprimez une table interne, Hive supprime également les données associées.
+- Créer des tables internes à partir de données externes peut être nécessaire pour optimiser les performances des requêtes, pour sécuriser les données ou pour transformer les types de données pour des analyses spécifiques.
+
+**Sérialisation et types de données** :
+- La sérialisation dans Hive, notamment à l'aide de SERDE (Serialisation/Deserialisation), permet de spécifier comment Hive lit et écrit les données, en gérant des formats complexes comme CSV, où les virgules, guillemets, et d'autres caractères peuvent compliquer la lecture des fichiers.
+- La transformation de types de données (par exemple, de `string` à `int` ou `double`) est souvent nécessaire pour effectuer des calculs mathématiques ou des opérations statistiques, car les opérations sur des chaînes de caractères sont limitées et moins performantes.
+
+**Exemple de transformation** :
+Après avoir importé des données avec des types génériques comme des chaînes de caractères (pour assurer qu'aucune donnée n'est mal interprétée à l'importation), vous pourriez vouloir créer des tables internes où les colonnes sont castées en types spécifiques pour faciliter les analyses, comme des calculs de moyennes ou des jointures entre tables.
+
+### Résumé de l'utilité
+En combinant l'utilisation de tables externes et internes, ainsi que la sérialisation appropriée et la gestion des types de données, vous pouvez :
+1. Assurer que les données sont gérées de façon sûre et efficace.
+2. Optimiser les performances des requêtes en Hive.
+3. Préparer les données pour des analyses complexes en convertissant les types de données de manière à ce qu'ils soient utilisables pour des requêtes SQL complexes.
+
+Ce processus rend les données plus flexibles et puissantes pour le traitement et l'analyse dans des environnements de big data comme Hadoop.
+
+# 7 - Créer des tables externes : est-ce une bonne idée ?
+
+- Créer directement des tables externes plutôt que des tables internes (gérées) dans Hive peut sembler une bonne idée dans certaines situations, notamment pour la flexibilité et la gestion des données qu'elles offrent. 
+- Cependant, il y a plusieurs raisons pour lesquelles vous pourriez choisir de créer des tables internes ou de convertir des tables externes en tables internes dans certains cas. Voici quelques considérations clés :
+
+### 1. **Contrôle des données**
+- **Tables internes** : Hive gère le stockage des données. Lorsque vous supprimez une table interne, Hive supprime aussi les fichiers de données correspondants dans HDFS. Cela peut être utile pour garantir que les données ne sont pas laissées inutilisées sur le disque après qu'elles ne sont plus nécessaires.
+- **Tables externes** : Les données restent sur HDFS même après la suppression de la table. Cela peut entraîner une gestion des données moins rigoureuse, avec des fichiers non nécessaires qui occupent de l'espace disque.
+
+### 2. **Sécurité des données**
+- L'utilisation de tables internes peut offrir un niveau de sécurité accru puisque la gestion des données est plus strictement contrôlée par Hive. Les permissions sur les fichiers de données peuvent être plus facilement gérées par les outils de Hive.
+
+### 3. **Performance**
+- **Optimisation** : Hive peut optimiser le stockage et l'accès aux données pour les tables internes, car il gère le format de stockage et les métadonnées. Pour les tables externes, Hive ne peut pas appliquer certaines optimisations car il doit respecter l'intégrité du format et de l'emplacement des données externes.
+- **Format de stockage** : Les tables internes permettent l'utilisation de formats de fichiers optimisés comme ORC ou Parquet, qui sont très efficaces pour les grandes analyses de données avec Hive.
+
+### 4. **Opérations de transformation de données**
+- Il est souvent nécessaire de transformer les données (changement de type de données, formatage, etc.) après leur chargement initial dans Hive. Créer des tables internes à partir des tables externes permet de réaliser ces transformations et de stocker les résultats de manière optimisée pour les requêtes futures.
+
+### 5. **Cohérence des données**
+- Avec des tables internes, il est plus facile de maintenir la cohérence des données, surtout dans des environnements où les schémas et les données évoluent rapidement. Les tables internes assurent que les modifications de schéma sont bien propagées et que les données sont stockées conformément à ces modifications.
+
+### Résumé
+- Le choix entre créer directement des tables externes ou internes dépend donc de plusieurs facteurs tels que la manière dont vous souhaitez gérer vos données, les exigences de performance de vos requêtes, les besoins en sécurité et en gestion des données, ainsi que la complexité des opérations de transformation de données.
+- Les tables externes offrent une grande flexibilité et sont idéales pour des situations où les données sont gérées en dehors de Hive, tandis que les tables internes sont préférables pour une gestion et une optimisation complètes par Hive.
+
+# 8 - script 3 ?
+
+- Le script SQL (script #3) vise à extraire des informations spécifiques sur les évaluations des films à partir d'une base de données, en utilisant plusieurs requêtes différentes pour répondre à des questions variées. 
+- Voici une explication des requêtes avec quelques exemples :
+
+1) **Année avec le plus grand nombre d'évaluations** :
+   Cette requête identifie l'année pendant laquelle le plus grand nombre d'évaluations de films a été enregistré. Elle convertit les timestamps de l'évaluation (`rating_time`) en années, compte le nombre d'évaluations pour chaque année, et trie les résultats par année en ordre décroissant. Selon les données, 2016 est l'année avec le plus grand nombre d'évaluations (2,077,152 évaluations).
+
+2) **Film le mieux noté de chaque année** :
+   Cette requête calcule la note moyenne de chaque film pour chaque année, en s'assurant que chaque utilisateur est compté une seule fois par film et année. Elle joint ensuite ces résultats avec une table des films pour récupérer les noms des films, et utilise la fonction de classement pour sélectionner le film ayant la note moyenne la plus élevée par année. Par exemple, en 2017, le documentaire "Planet Earth (2006)" a eu la meilleure note moyenne.
+
+3) **Chaque année ayant un film qui a le maximum d'utilisateurs** :
+   Cette requête est utilisée pour identifier les films qui ont attiré le plus grand nombre d'utilisateurs distincts dans chaque année. Elle crée une table temporaire où chaque film est lié à l'année où il a eu le plus grand nombre d'utilisateurs.
+
+4) **Jointure de la table avec le maximum d'utilisateurs par année avec les films les mieux notés de chaque année** :
+   Cette requête combine les informations des requêtes précédentes pour identifier les films qui non seulement ont eu la meilleure note moyenne chaque année mais aussi le plus grand nombre d'utilisateurs cette même année. Elle permet d'obtenir une vue plus complète de l'impact et de la popularité des films au fil du temps.
+
+5) **Film qui a été évalué 50% de plus après 5 ans de sa sortie** :
+   Cette requête complexe identifie les films dont le nombre d'évaluations a augmenté de plus de 50% après cinq ans de leur sortie initiale. Elle nécessite une manipulation précise des dates de sortie des films et des années d'évaluation pour calculer correctement l'augmentation en pourcentage des évaluations. 
+
+Ces requêtes sont des exemples de la manière dont on peut analyser des données complexes de manière efficace à l'aide du SQL pour fournir des insights précieux sur les tendances des évaluations de films au fil des années.
