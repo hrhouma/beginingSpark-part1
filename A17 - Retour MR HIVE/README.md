@@ -4,5 +4,5 @@
 
 0 - traitement MR - Hive     
 1 - labo1  - AWS LOAD BALANCER  
-2 - labo2 - AWS Autoscaling 
+2 - labo2 - AWS Autoscaling     
 3 - labo3 - Projet Hive 
