@@ -166,3 +166,109 @@ sed '1a\Comment ça va?' exemple.txt
 Cela ajoutera "Comment ça va?" après la première ligne du fichier.
 
 Ces exemples couvrent des utilisations de base de `sed` pour le traitement de texte. Avec `sed`, tu peux effectuer des modifications très spécifiques sur des fichiers textes de manière automatique, ce qui est extrêmement utile pour le scripting et l'automatisation des tâches sur les systèmes Unix et Linux.
+
+# 3 - Autres exemples simples de la commande sed : 
+
+ - Voici une liste des directives couramment utilisées dans `sed` avec des exemples pour chacune.
+ - Ces commandes permettent d'effectuer diverses opérations de manipulation de texte directement depuis la ligne de commande.
+
+### 1. Substitution (`s`)
+- **Description** : Remplace le premier ou tous les occurrences d'un motif trouvé dans chaque ligne.
+- **Syntaxe** : `s/motif/remplacement/flags`
+- **Exemple** :
+  ```bash
+  sed 's/chat/chien/' fichier.txt  # Remplace la première occurrence de "chat" par "chien" dans chaque ligne
+  sed 's/chat/chien/g' fichier.txt # Remplace toutes les occurrences de "chat" par "chien" dans chaque ligne
+  ```
+
+### 2. Append (`a`)
+- **Description** : Ajoute du texte après une ligne spécifiée.
+- **Syntaxe** : `numLigne a\texte`
+- **Exemple** :
+  ```bash
+  sed '2a\Ceci est ajouté après la ligne 2.' fichier.txt
+  ```
+
+### 3. Insert (`i`)
+- **Description** : Insère du texte avant une ligne spécifiée.
+- **Syntaxe** : `numLigne i\texte`
+- **Exemple** :
+  ```bash
+  sed '3i\Ceci est inséré avant la ligne 3.' fichier.txt
+  ```
+
+### 4. Delete (`d`)
+- **Description** : Supprime des lignes spécifiées.
+- **Syntaxe** : `/motif/d`
+- **Exemple** :
+  ```bash
+  sed '/inutile/d' fichier.txt  # Supprime toutes les lignes contenant le mot "inutile"
+  ```
+
+### 5. Print (`p`)
+- **Description** : Imprime les lignes spécifiées à l'écran, utilisé souvent avec l'option `-n`.
+- **Syntaxe** : `/motif/p`
+- **Exemple** :
+  ```bash
+  sed -n '/important/p' fichier.txt  # Affiche les lignes contenant le mot "important"
+  ```
+
+### 6. Change (`c`)
+- **Description** : Remplace la ligne entière par un nouveau texte si elle correspond à un motif donné.
+- **Syntaxe** : `/motif/c\texte`
+- **Exemple** :
+  ```bash
+  sed '/obsolète/c\Cette ligne remplace l\'ancienne ligne obsolète.' fichier.txt
+  ```
+
+### 7. Transform (`y`)
+- **Description** : Remplace tous les caractères d'un ensemble par ceux d'un autre ensemble.
+- **Syntaxe** : `y/ensemble1/ensemble2/`
+- **Exemple** :
+  ```bash
+  sed 'y/abc/123/' fichier.txt  # Transforme 'a' en '1', 'b' en '2', 'c' en '3' sur chaque ligne
+  ```
+
+### 8. Next (`n`)
+- **Description** : Permet à `sed` de passer à la ligne suivante de l'entrée.
+- **Syntaxe** : `n`
+- **Exemple** :
+  ```bash
+  sed '/^$/n; s/^/Début de ligne: /' fichier.txt  # Ne fait rien pour les lignes vides et ajoute "Début de ligne: " au début des autres lignes
+  ```
+
+### 9. Quit (`q`)
+- **Description** : Quitte `sed` après avoir traité les lignes spécifiées.
+- **Syntaxe** : `numLigne q`
+- **Exemple** :
+  ```bash
+  sed '10 q' fichier.txt  # Traite jusqu'à la ligne 10 puis quitte
+  ```
+
+Ces commandes offrent une flexibilité énorme pour éditer des fichiers en batch ou en flux continu, rendant `sed` un outil indispensable pour le scripting sous Unix/Linux.
+
+
+# 3 - Liste des directives de `sed` : 
+Voici une liste des directives de `sed` :
+
+- **Substitution** : `s/motif/remplacement/flags`
+- **Append** : `numLigne a\texte`
+- **Insert** : `numLigne i\texte`
+- **Delete** : `/motif/d`
+- **Print** : `/motif/p`
+- **Change** : `/motif/c\texte`
+- **Transform** : `y/ensemble1/ensemble2/`
+- **Next** : `n`
+- **Quit** : `numLigne q`
+- **Edit** : `e` (utilise l'éditeur de texte pour modifier une ligne)
+- **List** : `l` (imprime les lignes de manière non ambiguë)
+- **Read** : `r fichier` (lit le contenu d'un fichier)
+- **Write** : `w fichier` (écrit dans un fichier)
+- **Exchange** : `x` (échange les tampons de pattern et de holding)
+- **Hold** : `h` (copie le pattern space dans le holding space)
+- **Get** : `g` (copie le holding space dans le pattern space)
+- **Multi-line Append** : `N` (ajoute la ligne suivante au pattern space)
+- **Multi-line Print** : `P` (imprime jusqu'au premier retour à la ligne du pattern space)
+- **Multi-line Delete** : `D` (supprime jusqu'au premier retour à la ligne du pattern space)
+
+Chacune de ces commandes peut être utilisée pour effectuer des manipulations spécifiques sur le texte dans un fichier ou un flux de données.
