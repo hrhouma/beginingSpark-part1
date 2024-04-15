@@ -5,7 +5,7 @@ hive
 show tables
  ```
 
-## les requêtes sont dans script3.sql 
+## Les requêtes sont dans script3.sql 
 
 
 # 1 - Explication détaillée du script 1 : 
