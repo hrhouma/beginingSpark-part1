@@ -27,5 +27,6 @@ Ces requêtes sont conçues pour extraire des informations significatives des do
 - **Jointure des utilisateurs max avec les films les mieux notés** : Fusionne les données pour découvrir quels films ont non seulement eu le plus d'utilisateurs chaque année mais étaient également bien notés.
 - **Analyse de la popularité à long terme** : Examine les films qui ont connu une augmentation significative des évaluations 5 ans après leur sortie, offrant des perspectives sur les tendances de popularité des films à long terme.
 
+# Résumé : 
 - Ces scripts et requêtes ensemble constituent une approche complète pour configurer, gérer et analyser un grand ensemble de données sur les évaluations de films, en utilisant des outils comme Bash pour la configuration et la gestion, et Hive pour les requêtes structurées et l'analyse. 
 - Cette configuration convient aux analystes de données cherchant à tirer des insights de grands ensembles de données dans un environnement de calcul distribué.
