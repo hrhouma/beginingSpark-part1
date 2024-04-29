@@ -114,6 +114,7 @@ Remplacez les valeurs selon votre configuration spécifique de sécurité Kafka.
 # Conclusion
 En suivant ces étapes, vous devriez pouvoir lancer et exécuter votre application Java qui écoute les paquets UDP et les transmet à un topic Kafka. Assurez-vous que tous les composants nécessaires sont correctement configurés et que l'environnement est prêt pour une exécution sans problème.
 
- 
+ # Référence : 
+ - https://www.youtube.com/watch?v=i9Eh244FOWo&ab_channel=IgorSouza
  
  
