@@ -19,6 +19,57 @@
 ## Nginx
 
 Nginx est un serveur web léger et un reverse proxy, utilisé également pour la mise en cache, le load balancing et la gestion des médias HTTP. Pour plus de détails, visitez [leur site web](https://nginx.org).
+D'accord, voici un exemple de section pour un fichier `README.md` qui explique en détail l'utilisation de Nginx comme reverse proxy, et pourquoi il est utilisé dans cette architecture avec FastAPI :
+
+```markdown
+# Nginx comme Reverse Proxy pour FastAPI
+
+## Pourquoi utiliser Nginx avec FastAPI?
+
+Dans notre architecture de projet, Nginx est utilisé comme reverse proxy devant FastAPI. Les raisons principales pour utiliser Nginx dans ce rôle sont :
+
+- **Performance**: Nginx est conçu pour gérer un grand nombre de connexions simultanées avec une utilisation efficace de la mémoire et du CPU. Il est donc idéal pour gérer les pics de trafic vers notre API.
+
+- **Sécurité**: En masquant les détails de l'infrastructure interne, Nginx contribue à protéger les serveurs d'applications comme FastAPI contre les attaques externes.
+
+- **Équilibrage de charge**: Nginx peut distribuer le trafic entre plusieurs instances de FastAPI, améliorant la disponibilité et la répartition de la charge.
+
+- **Mise en cache**: Nginx peut mettre en cache les réponses de l'API, réduisant le temps de réponse pour l'utilisateur final et diminuant la charge sur le serveur FastAPI.
+
+- **Gestion des SSL/TLS**: Nginx peut gérer les certificats SSL/TLS pour le chiffrement HTTPS, ce qui simplifie la configuration de la sécurité pour FastAPI.
+
+## Comment Nginx est-il configuré comme Reverse Proxy?
+
+Nginx agit comme intermédiaire pour les requêtes HTTP/HTTPS venant des clients. Voici un exemple de configuration de Nginx en tant que reverse proxy pour FastAPI :
+
+```nginx
+http {
+    server {
+        listen 80;
+        server_name example.com;
+
+        location / {
+            proxy_pass http://fastapi:8000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Host $server_name;
+        }
+    }
+}
+```
+
+Dans cette configuration, Nginx écoute sur le port 80 (HTTP) et transfère les requêtes au service FastAPI, qui est supposé s'exécuter localement sur le port 8000. Il définit également des en-têtes nécessaires pour que FastAPI puisse comprendre l'origine de la requête et gérer correctement le protocole HTTP.
+
+En résumé, Nginx sert de point d'entrée fiable et efficace pour les requêtes destinées à notre API FastAPI, offrant des performances optimales et une sécurité renforcée.
+
+```
+
+Vous pouvez utiliser cette section dans votre `README.md` pour expliquer le rôle et la configuration de Nginz dans votre architecture. Assurez-vous de l'adapter selon les spécifications techniques et les conventions de votre projet spécifique.
 
 ## Kafka
 
