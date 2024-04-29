@@ -1,4 +1,5 @@
-D'accord, voici un tutoriel étape par étape complet, avec tous les détails nécessaires pour configurer Kafka, Airflow, MongoDB, et un producteur Python dans un environnement Docker sur une instance AWS EC2.
+# Objectif : 
+- Configurer Kafka, Airflow, MongoDB, et un producteur Python dans un environnement Docker sur une instance AWS EC2.
 
 ### Prérequis
 
@@ -170,6 +171,3 @@ Ouvrez un navigateur et accédez à `http://<IP_Instance_AWS>:8080` pour voir l'
 
 Vous pouvez créer des topics, produire et consommer des messages en utilisant les commandes `docker-compose exec` comme décrit dans les messages précédents.
 
----
-
-Ce guide vous mènera à travers le processus complet pour configurer un environnement de développement intégrant Kafka, Airflow, et MongoDB, et pour exécuter un script Python qui produit des messages dans un topic Kafka. Si vous avez des fichiers spécifiques (comme `data.csv`) que vous souhaitez inclure, ils doivent être placés dans le répertoire approprié et référencés correctement dans votre script Python.
