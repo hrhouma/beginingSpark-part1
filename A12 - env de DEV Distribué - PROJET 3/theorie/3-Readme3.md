@@ -21,7 +21,6 @@
 Nginx est un serveur web léger et un reverse proxy, utilisé également pour la mise en cache, le load balancing et la gestion des médias HTTP. Pour plus de détails, visitez [leur site web](https://nginx.org).
 D'accord, voici un exemple de section pour un fichier `README.md` qui explique en détail l'utilisation de Nginx comme reverse proxy, et pourquoi il est utilisé dans cette architecture avec FastAPI :
 
-```markdown
 # Nginx comme Reverse Proxy pour FastAPI
 
 ## Pourquoi utiliser Nginx avec FastAPI?
@@ -67,9 +66,6 @@ Dans cette configuration, Nginx écoute sur le port 80 (HTTP) et transfère les 
 
 En résumé, Nginx sert de point d'entrée fiable et efficace pour les requêtes destinées à notre API FastAPI, offrant des performances optimales et une sécurité renforcée.
 
-```
-
-Vous pouvez utiliser cette section dans votre `README.md` pour expliquer le rôle et la configuration de Nginz dans votre architecture. Assurez-vous de l'adapter selon les spécifications techniques et les conventions de votre projet spécifique.
 
 ## Kafka
 
