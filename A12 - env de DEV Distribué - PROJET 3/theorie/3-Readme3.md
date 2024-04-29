@@ -67,7 +67,7 @@ Dans cette configuration, Nginx écoute sur le port 80 (HTTP) et transfère les 
 En résumé, Nginx sert de point d'entrée fiable et efficace pour les requêtes destinées à notre API FastAPI, offrant des performances optimales et une sécurité renforcée.
 
 
-## Kafka
+# Kafka
 
 Apache Kafka est une plateforme de streaming distribuée qui permet de publier, de s'abonner, de stocker et de traiter des flux de données en temps réel. Pour plus d'informations, consultez [leur site web](https://kafka.apache.org).
 
@@ -122,7 +122,7 @@ En conclusion, Kafka joue un rôle vital dans notre architecture en fournissant 
 
 ### Référence :  document ci-joint !
 
-## Docker
+# Docker
 
 Docker est une plateforme de conteneurisation qui permet de simplifier le déploiement d'applications dans des conteneurs logiciels. Pour en savoir plus, visitez [leur site web](https://www.docker.com).
 Voici une section détaillée pour un fichier `README.md` qui explique l'utilisation de Docker dans le contexte d'une architecture de projet :
@@ -197,7 +197,7 @@ En utilisant Docker, nous nous assurons que notre application s'exécute de mani
 
 
 
-## Debezium
+# Debezium
 
 Debezium est un outil open source pour la capture de données modifiées (CDC), qui permet de capturer les changements de bases de données en temps réel. Plus d'informations sont disponibles sur [leur site web](https://debezium.io).
 
@@ -330,7 +330,7 @@ Pour plus d'informations sur Debezium et comment le configurer, vous pouvez cons
 - C’est comme avoir des yeux et une mémoire parfaite pour votre inventaire, sans jamais avoir besoin de faire une pause.
 - Ce guide est écrit dans un langage simple et accessible, expliquant le rôle de Debezium dans la capture des changements de données et comment il peut être intégré dans des systèmes plus larges tels que Kafka pour permettre l'analyse en temps réel et la synchronisation des données.
 
-## PostgreSQL
+# PostgreSQL
 
 PostgreSQL est un système de gestion de base de données relationnelles et objet (ORDBMS) reconnu pour sa robustesse et ses fonctionnalités. Pour plus de détails, consultez [leur site web](https://www.postgresql.org).
 # Guide Technique sur PostgreSQL
@@ -388,7 +388,7 @@ Avec son support pour les langages de programmation modernes et les frameworks d
 - N'hésitez pas à incorporer PostgreSQL dans vos projets pour bénéficier de sa puissance, sa fiabilité, et sa capacité à gérer des données complexes avec facilité.
 
 
-## NiFi
+# NiFi
 
 - Apache NiFi est une plateforme automatisée et extensible pour déplacer, transformer, et gérer les données entre systèmes.
 - Pour plus d'informations, visitez [leur site web](https://nifi.apache.org).
@@ -473,7 +473,7 @@ Pour créer un flux de données de base:
 Pour plus d'informations détaillées et des tutoriels, consultez la [documentation officielle de NiFi](https://nifi.apache.org/docs.html).
 
 
-## AWS Glue
+# AWS Glue
 
 AWS Glue est un service ETL (Extract, Transform, Load) entièrement géré qui facilite la préparation et le chargement de données pour l'analyse. Découvrez plus sur [leur page AWS](https://aws.amazon.com/glue).
 
@@ -541,7 +541,7 @@ ite avec l'écosystème AWS, AWS Glue est une solution de choix pour les transfo
 Pour plus d'informations détaillées et pour commencer à utiliser AWS Glue, visitez la [page officielle du service AWS Glue](https://aws.amazon.com/glue/).
 
 
-## Crawler
+# Crawler
 
 - Dans le contexte d'AWS Glue, un Crawler est utilisé pour catégoriser les données et populer automatiquement les catalogues de données.
 - Plus de détails sur [la documentation AWS](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html).
@@ -644,7 +644,7 @@ Supposons que vous avez des données de ventes stockées dans Amazon S3 sous for
 - Ils permettent de transformer ces données en informations exploitables qui aident à piloter votre entreprise de manière plus efficace.
 
 
-## Amazon Athena
+# Amazon Athena
 
 - Amazon Athena est un service de requête interactif qui permet d'analyser des données dans Amazon S3 en utilisant SQL standard. Plus d'informations sur [leur page AWS](https://aws.amazon.com/athena).
 
@@ -787,7 +787,7 @@ Supposons que chaque transaction réalisée sur votre site web génère des donn
 
 
 
-## Terraform et AWS CloudFormation
+# Terraform et AWS CloudFormation
 
 - Terraform est un outil d'Infrastructure as Code (IaC) qui permet de construire, modifier, et versionner l'infrastructure de manière efficace.
 - Pour en savoir plus, visitez [leur site web](https://www.terraform.io).
