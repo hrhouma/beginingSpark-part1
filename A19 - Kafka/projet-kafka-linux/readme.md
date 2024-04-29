@@ -1,6 +1,3 @@
-Here's the revised `README.md` file for Kafka on Linux, including the specified commands and descriptions in French:
-
-```markdown
 # Atelier Kafka sur Linux
 
 Bienvenue à l'atelier Kafka sous Linux ! Ce guide vous aidera à configurer Kafka et à exécuter des opérations de base sur les topics. Veuillez exécuter ces commandes dans un terminal Linux.
@@ -96,6 +93,4 @@ bin/kafka-server-start.sh config/server.properties
 ./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic myfourth
 ./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic myfifth
 ```
-```
 
-Save this content into a `README.md` file and use it as a guide for your Kafka workshop under Linux.
