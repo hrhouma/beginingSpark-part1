@@ -114,24 +114,6 @@ Remplacez les valeurs selon votre configuration spécifique de sécurité Kafka.
 ### Conclusion
 En suivant ces étapes, vous devriez pouvoir lancer et exécuter votre application Java qui écoute les paquets UDP et les transmet à un topic Kafka. Assurez-vous que tous les composants nécessaires sont correctement configurés et que l'environnement est prêt pour une exécution sans problème.
 
-#License 
-
-Copyright (C) 2023 Chad Preisler
-
- This file is part of kafkasource.visualkafka.
-
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
  
  
