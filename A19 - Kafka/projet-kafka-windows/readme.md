@@ -2,7 +2,7 @@
 
 - Bienvenue à l'atelier Kafka ! Ce guide vous aidera à configurer Kafka sur une machine Windows et à réaliser des opérations de base avec les topics. 
 - Assurez-vous d'exécuter ces commandes dans l'Invite de commandes.
-
+- Théorie : https://drive.google.com/drive/folders/1mlmSfboVO8VRhFRiO0bol0AlnHgCMBQI?usp=sharing
 ## Prérequis
 
 - Kafka doit être installé dans le répertoire `C:\HADOOP\kafka_2.12-3.5.0`.
