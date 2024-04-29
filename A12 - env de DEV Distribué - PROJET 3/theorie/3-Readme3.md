@@ -16,7 +16,7 @@
 - [Amazon Athena](#amazon-athena)
 - [Terraform](#terraform)
 
-## Nginx
+# Nginx
 
 Nginx est un serveur web léger et un reverse proxy, utilisé également pour la mise en cache, le load balancing et la gestion des médias HTTP. Pour plus de détails, visitez [leur site web](https://nginx.org).
 D'accord, voici un exemple de section pour un fichier `README.md` qui explique en détail l'utilisation de Nginx comme reverse proxy, et pourquoi il est utilisé dans cette architecture avec FastAPI :
