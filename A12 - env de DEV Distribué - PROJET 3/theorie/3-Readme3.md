@@ -72,7 +72,7 @@ En résumé, Nginx sert de point d'entrée fiable et efficace pour les requêtes
 Apache Kafka est une plateforme de streaming distribuée qui permet de publier, de s'abonner, de stocker et de traiter des flux de données en temps réel. Pour plus d'informations, consultez [leur site web](https://kafka.apache.org).
 Bien sûr, voici une section détaillée pour un fichier `README.md` qui décrit Apache Kafka et son modèle de publication et d'abonnement :
 
-```markdown
+
 # Apache Kafka et le Modèle Publish-Subscribe
 
 ## Qu'est-ce qu'Apache Kafka?
@@ -129,7 +129,7 @@ En conclusion, Kafka joue un rôle vital dans notre architecture en fournissant 
 Docker est une plateforme de conteneurisation qui permet de simplifier le déploiement d'applications dans des conteneurs logiciels. Pour en savoir plus, visitez [leur site web](https://www.docker.com).
 Voici une section détaillée pour un fichier `README.md` qui explique l'utilisation de Docker dans le contexte d'une architecture de projet :
 
-```markdown
+
 # Docker dans l'Architecture de Projet
 
 ## Qu'est-ce que Docker?
