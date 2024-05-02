@@ -572,3 +572,26 @@ Le **Schema Registry** maintient la structure des messages, assurant que les con
 - **Consumer** : Lit les messages stockés dans les brokers Kafka.
 
 - Dans ce schéma, les brokers agissent comme des intermédiaires entre les producteurs et les consommateurs, en stockant les messages et en les redistribuant selon les besoins.
+- 
+# 10 - Rappel - comparaison concepts BD et KAFKA (terminologie)
+
+- Voici une comparaison entre les concepts de Kafka et ceux d'une base de données relationnelle :
+
+1. **Broker** :
+   - **Kafka** : Un serveur Kafka qui gère le stockage et la distribution des messages.
+   - **Base de Données Relationnelle (BDR)** : L'équivalent d'un **Serveur de Bases de Données**, qui gère plusieurs bases de données.
+
+2. **Topic** :
+   - **Kafka** : Un sujet où les messages sont stockés, similaire à un flux d'événements.
+   - **BDR** : Comparable à une **Table** dans une base de données, où chaque table contient des lignes de données spécifiques.
+
+3. **Offset** :
+   - **Kafka** : Un numéro de séquence unique qui identifie chaque message dans un topic.
+   - **BDR** : Similaire à l'**ID d'une ligne** dans une table, qui est souvent une clé primaire unique.
+
+### **Résumé de la Comparaison**
+- **Brokers** sont comme des **serveurs de bases de données**.
+- **Topics** sont comme des **tables**.
+- **Offsets** sont comme des **ID de lignes**.
+
+- Cependant, Kafka est conçu pour le traitement de flux de données, tandis que les bases de données relationnelles sont conçues pour les transactions structurées et les requêtes.
