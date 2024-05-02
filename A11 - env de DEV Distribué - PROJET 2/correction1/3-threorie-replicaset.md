@@ -4,7 +4,7 @@
 
 - Bienvenue dans ce cours sur les ensembles de réplicas dans MongoDB !
 - Nous allons plonger dans les concepts essentiels pour comprendre cette fonctionnalité clé de MongoDB, et vous verrez comment l'implémenter et l'utiliser efficacement.
-- 
+  
 # Référence : 
 - https://blog.devgenius.io/how-to-deploy-a-mongodb-replicaset-using-docker-compose-a538100db471
 ---
