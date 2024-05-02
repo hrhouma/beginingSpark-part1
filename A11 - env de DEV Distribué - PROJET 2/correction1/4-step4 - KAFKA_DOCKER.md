@@ -537,8 +537,11 @@ La communication se fait comme suit :
 Le **Schema Registry** maintient la structure des messages, assurant que les consommateurs comprennent les données du producteur.
 
 
-# 9 - Représentation plus simple de l'architecture ?: 
+# 9 - Représentation plus simple de l'architecture ?:
 
+- Voici une version encore plus simplifiée :
+
+```
 +----------+                  +-----------------+
 |          |                  |                 |
 | Producer | +------------->  | Kafka Brokers   |
@@ -559,3 +562,13 @@ Le **Schema Registry** maintient la structure des messages, assurant que les con
 | Consumer | <--------------- +-----------------+
 |          |       
 +----------+
+```
+
+### **Explication**
+
+- **Producer** : Produit et envoie des messages vers les brokers Kafka.
+- **Kafka Brokers (Cluster)** : Reçoivent, stockent et distribuent les messages aux consommateurs.
+- **Schema Registry** : Gère les schémas des messages pour assurer une structure cohérente.
+- **Consumer** : Lit les messages stockés dans les brokers Kafka.
+
+- Dans ce schéma, les brokers agissent comme des intermédiaires entre les producteurs et les consommateurs, en stockant les messages et en les redistribuant selon les besoins.
