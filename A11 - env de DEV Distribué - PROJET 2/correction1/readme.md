@@ -1,4 +1,4 @@
-# Étape 1: Installation de Prometheus et Grafana
+# 1 - Étape 1: Installation de Prometheus et Grafana
 #### 1. Installation de Prometheus
 1. **Télécharger Prometheus**:
    - Téléchargez Prometheus en version `tar.gz` depuis le [site officiel](https://prometheus.io/download/). Par exemple :
@@ -104,7 +104,7 @@
 
 
 
-# Plus de détails - Étape 1: Installation de Prometheus et Grafana
+# 2 - Plus de détails - Étape 1: Installation de Prometheus et Grafana
 
 Pour créer ou importer un tableau de bord Kafka dans Grafana, suivez ces étapes :
 
