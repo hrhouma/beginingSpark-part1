@@ -4,7 +4,9 @@
 
 - Bienvenue dans ce cours sur les ensembles de réplicas dans MongoDB !
 - Nous allons plonger dans les concepts essentiels pour comprendre cette fonctionnalité clé de MongoDB, et vous verrez comment l'implémenter et l'utiliser efficacement.
-
+- 
+# Référence : 
+- https://blog.devgenius.io/how-to-deploy-a-mongodb-replicaset-using-docker-compose-a538100db471
 ---
 
 ## Table des Matières
@@ -27,7 +29,8 @@
 
 Un ensemble de réplicas dans MongoDB est un groupe d'instances MongoDB qui conservent les mêmes données. Plutôt que de dépendre d'une seule instance, un ensemble de réplicas assure la redondance et la disponibilité des données, jusqu'à 50 instances.
 
-![Illustration des ensembles de réplicas](images/replica-set.png)
+![image](https://github.com/hrhouma/beginingSpark-part1/assets/10111526/958a9b11-4640-465f-9dd1-6dc25a6d3601)
+
 
 ## Pourquoi avez-vous besoin d'un ensemble de réplicas ?
 
