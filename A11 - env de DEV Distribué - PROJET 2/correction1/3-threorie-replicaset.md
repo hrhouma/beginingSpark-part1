@@ -1,11 +1,9 @@
-Voici un exemple de `README.md` conçu comme un cours pour les étudiants, bien structuré et animé :
-
-```markdown
 # Cours sur MongoDB et les Ensembles de Réplicas
 
 ## Introduction
 
-Bienvenue dans ce cours sur les ensembles de réplicas dans MongoDB ! Nous allons plonger dans les concepts essentiels pour comprendre cette fonctionnalité clé de MongoDB, et vous verrez comment l'implémenter et l'utiliser efficacement.
+- Bienvenue dans ce cours sur les ensembles de réplicas dans MongoDB !
+- Nous allons plonger dans les concepts essentiels pour comprendre cette fonctionnalité clé de MongoDB, et vous verrez comment l'implémenter et l'utiliser efficacement.
 
 ---
 
