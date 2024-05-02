@@ -12,7 +12,7 @@
 # Référence 1 : 
 - docker-compose.yaml dans step1
 # Référence 2 : 
-- https://github.com/RWaltersMA/mongo-spark-jupyter/blob/master/docker-compose.yml ( ne contient pas 
+- https://github.com/RWaltersMA/mongo-spark-jupyter/blob/master/docker-compose.yml ( ne contient pas de mongo-express pour l'affichage)
 # Référence 3 : Réponse de siddharthans2000  (Dec 21, 2022 ) ,  ça fonctionne !! 
 - https://github.com/mongo-express/mongo-express-docker/issues/67
 
