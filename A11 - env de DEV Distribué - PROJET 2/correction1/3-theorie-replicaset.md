@@ -93,3 +93,21 @@ Les ensembles de réplicas de MongoDB offrent une haute disponibilité et une re
 - [Tutoriel sur les Ensembles de Réplicas](https://example.com/tutorial-replica-sets)
 
 
+# Annexe - Replicaset
+
+Dans le contexte de MongoDB, un **Replica Set** est un ensemble de nœuds MongoDB qui conservent la même copie des données pour assurer la **redondance des données** et la **haute disponibilité**. Un Replica Set typique comporte :
+
+- **Un nœud primaire** : qui reçoit toutes les écritures et coordonne la réplication.
+- **Des nœuds secondaires** : qui répliquent les données du nœud primaire. Si le primaire tombe en panne, un des nœuds secondaires est élu pour le remplacer.
+
+Le Replica Set offre des avantages comme la tolérance aux pannes, le basculement automatique et la répartition de la charge en lecture.
+
+---
+
+Dans le contexte de Kubernetes, un **ReplicaSet** est un objet qui garantit un nombre spécifique de pods fonctionnant à un moment donné. Il s'assure que le nombre spécifié de répliques de pods identiques soit maintenu, et gère leur déploiement et leur redémarrage en cas de défaillance. Un ReplicaSet fonctionne en :
+
+- **Spécifiant un nombre de répliques souhaitées** : Kubernetes s'assure que le nombre exact de pods répliqués soit toujours opérationnel.
+- **Définissant un sélecteur de pods** : pour identifier les pods gérés par le ReplicaSet.
+
+- L'utilisation d'un ReplicaSet est courante avec un objet plus avancé appelé **Deployment**, qui gère les mises à jour, le déploiement progressif, le rollback, etc.
+
