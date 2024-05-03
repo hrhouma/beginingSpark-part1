@@ -124,3 +124,95 @@ https://github.com/hrhouma/MongoDB_replica_set
 
 - N'hésitez pas à ajouter des détails spécifiques à votre cas d'utilisation.
 https://blog.devgenius.io/how-to-deploy-a-mongodb-replicaset-using-docker-compose-a538100db471
+
+
+# Annexe 1 : Comment vérifier si les données sont répliquées ? 
+
+**Question** : J'ai inséré des données dans le premier et principal serveur de base de données Mongo. Comment vérifier si les données sont répliquées ? Dois-je utiliser `rs` ?
+
+**Réponse** : Oui, pour vérifier si les données ont été correctement répliquées dans votre Replica Set MongoDB, vous pouvez utiliser les approches suivantes :
+
+### 1. Utiliser `rs.status()`
+Exécutez la commande `rs.status()` sur n'importe quel nœud pour obtenir le statut du Replica Set. Cette commande vous montrera l'état de réplication de chaque membre et s'il est synchronisé avec le primaire.
+
+### 2. Vérifier les données sur les nœuds secondaires
+Pour vérifier directement si les données sont répliquées sur les nœuds secondaires :
+
+1. **Se connecter à un nœud secondaire** : Vous devrez peut-être modifier la configuration pour permettre les opérations de lecture sur les nœuds secondaires :
+   ```javascript
+   rs.slaveOk()
+   ```
+   Notez que cette commande permet les opérations de lecture uniquement pour la session actuelle. Ce n'est pas une modification permanente.
+
+2. **Interroger la collection** : Interrogez la collection sur le nœud secondaire pour voir si les données sont disponibles. Par exemple :
+   ```javascript
+   db.collectionName.find()
+   ```
+
+### 3. Comparer la taille de l'oplog
+- Une autre approche consiste à vérifier la taille de l'oplog pour voir si les opérations ont été appliquées de manière cohérente :
+```javascript
+rs.printReplicationInfo()
+```
+- Cela vous donnera des informations sur l'oplog, comme sa taille et l'heure de la dernière opération.
+
+### 4. Vérifier le retard de réplication
+- Pour s'assurer que vos données sont répliquées avec un retard minimal, vous pouvez vérifier le retard de réplication.
+- Un faible retard de réplication signifie que vos nœuds secondaires sont proches d'être synchronisés avec le primaire.
+
+### Résumé
+- En utilisant ces méthodes, vous pouvez vérifier si les données sont répliquées avec succès.
+- Le statut du Replica Set et les requêtes directes sur les nœuds secondaires vous donneront une bonne indication de la santé de la réplication.
+
+# Annexe 2: liste complète des commandes liées aux Replica Sets (rs) dans MongoDB
+
+- Voici une liste complète des commandes liées aux Replica Sets (rs) dans MongoDB :
+
+1. **rs.status()**
+   - Affiche l'état actuel du Replica Set, incluant le statut de chaque membre et leur état de réplication.
+
+2. **rs.initiate()**
+   - Initialise un nouveau Replica Set avec une configuration par défaut ou personnalisée.
+
+3. **rs.add()**
+   - Ajoute un nouveau nœud secondaire au Replica Set.
+   - Exemple : `rs.add("mongodb2:27017")`
+
+4. **rs.remove()**
+   - Supprime un nœud du Replica Set.
+   - Exemple : `rs.remove("mongodb2:27017")`
+
+5. **rs.reconfig()**
+   - Permet de reconfigurer le Replica Set en appliquant une nouvelle configuration.
+   - Exemple d'utilisation : 
+     ```javascript
+     cfg = rs.conf()
+     cfg.members[1].priority = 2
+     rs.reconfig(cfg)
+     ```
+
+6. **rs.stepDown()**
+   - Force le nœud primaire actuel à se retirer, permettant à un nœud secondaire d'être élu comme nouveau primaire.
+   - Exemple : `rs.stepDown(60)`
+
+7. **rs.freeze()**
+   - Empêche un nœud secondaire d'être élu comme primaire pendant une durée spécifiée.
+   - Exemple : `rs.freeze(120)`
+
+8. **rs.slaveOk()**
+   - Permet les opérations de lecture sur un nœud secondaire dans la session actuelle.
+   - Exemple : `rs.slaveOk()`
+
+9. **rs.printReplicationInfo()**
+   - Affiche des informations générales sur la réplication, y compris la taille de l'oplog et le temps des dernières opérations.
+
+10. **rs.printSecondaryReplicationInfo()**
+    - Affiche des informations détaillées sur la synchronisation des nœuds secondaires, notamment le retard de réplication.
+
+11. **rs.conf()**
+    - Renvoie la configuration actuelle du Replica Set.
+
+12. **rs.isMaster()**
+    - Retourne les informations du nœud sur lequel la commande est exécutée, y compris s'il est primaire ou secondaire.
+
+- Chaque commande offre des informations et des fonctionnalités essentielles pour la gestion et la maintenance des Replica Sets dans MongoDB.
