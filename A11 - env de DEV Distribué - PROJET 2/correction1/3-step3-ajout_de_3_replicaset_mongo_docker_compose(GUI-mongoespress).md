@@ -82,10 +82,19 @@ mongo-express:
 1. Cloner le dépôt :
    ```bash
    git clone <LIEN_A_AJOUTER>
+   git clone https://github.com/hrhouma/MongoDB_replica_set.git
    cd <NOM_DU_REPO>
+   cd MongoDB_replica_set
    ```
-
 2. Initialiser le Replica Set :
+   ```sh
+   chmod u+x startReplicaSetEnvironment.sh
+   sh startReplicaSetEnvironment.sh
+   docker ps
+   ```
+3. Observez les services (conteneurs avec la commande docker ps). mongo1, mongo2 et mongo3 sont up mais mongoexpress est à l'état de redémarrage (restarting).
+   Pour résoudre ce problème, passez à l'étape 5.
+5. Initialiser le Replica Set :
    ```bash
    docker exec -it mongo1 mongo
    rs.status()
