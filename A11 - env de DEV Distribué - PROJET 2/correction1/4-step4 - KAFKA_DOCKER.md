@@ -129,7 +129,6 @@
 - Voici un exemple de fichier `docker-compose.yml` pour déployer Kafka :
 - Référence : https://jskim1991.medium.com/docker-docker-compose-example-for-kafka-zookeeper-and-schema-registry-c516422532e7
 
-- le fichier ci-bas n'est pas correcte. Vous pouvez vous amuser à faire du troubleshooting si vous le désirez. Sinon vous pouver copier le compose de l'article ci-haut.
 ```yaml
 version: '3'
 services:
@@ -171,7 +170,6 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker-1:9092,PLAINTEXT_INTERNAL://localhost:19092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
-
   kafka-broker-2:
     image: confluentinc/cp-kafka:latest
     hostname: kafka-broker-2
@@ -184,8 +182,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker-2:9092,PLAINTEXT_INTERNAL://localhost:29092
-      KAFKA_OFFSETS_TOPIC REPLICATION_FACTOR: 3
-
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
   kafka-broker-3:
     image: confluentinc/cp-kafka:latest
     hostname: kafka-broker-3
@@ -196,9 +193,9 @@ services:
     environment:
       KAFKA_BROKER_ID: 3
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      KAFKA_LISTENER SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
-      KAFKA_ADVERTISED LISTENERS: PLAINTEXT://kafka-broker-3:9092,PLAINTEXT_INTERNAL://localhost:39092
-      KAFKA_OFFSETS_TOPIC REPLICATION FACTOR: 3
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker-3:9092,PLAINTEXT_INTERNAL://localhost:39092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
 ```
 
 ## Version correcte: 
