@@ -20,7 +20,7 @@ su
 #ou sudo -s
 pwd
 git clone https://github.com/hrhouma/install-docker.git
-cd /install-docker/
+cd install-docker/
 chmod +x install-docker.sh
 ./install-docker.sh
 #ou sh install-docker.sh
