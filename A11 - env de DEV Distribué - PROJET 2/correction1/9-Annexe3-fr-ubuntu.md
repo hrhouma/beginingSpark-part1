@@ -14,7 +14,21 @@ Ce guide fournit des instructions détaillées pour configurer Kafka, Zookeeper 
    sudo cp /path/to/docker-compose.yml /opt/docker_exp
    ```
 
-## PARTIE (2/4) : Installer Docker
+## PARTIE (2/4) : Installer Docker méthode 1
+su
+#ou sudo -s
+pwd
+git clone https://github.com/hrhouma/install-docker.git
+cd /install-docker/
+chmod +x install-docker.sh
+./install-docker.sh
+#ou sh install-docker.sh
+docker version
+docker compose version
+
+
+## PARTIE (3/4) : Installer Docker méthode 2
+## Installer Docker 
 1. Mettez à jour le système et installez les prérequis :
    ```sh
    sudo apt-get update
@@ -36,7 +50,7 @@ Ce guide fournit des instructions détaillées pour configurer Kafka, Zookeeper 
    docker ps
    ```
 
-## PARTIE (3/4) : Installer Docker Compose
+## Installer Docker Compose
 1. Téléchargez et installez Docker Compose :
    ```sh
    sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
@@ -48,7 +62,12 @@ Ce guide fournit des instructions détaillées pour configurer Kafka, Zookeeper 
    docker-compose version
    ```
 
+
+
+
+
 ## PARTIE (4/4) : Configurer Kafka avec des clients Python
+
 1. Démarrez les services Kafka en utilisant Docker Compose :
    ```sh
    cd /opt/docker_exp
