@@ -116,6 +116,4 @@ This guide provides step-by-step instructions to set up Kafka, Zookeeper, and Do
 
 ## Reference
 - [Docker Compose Example for Kafka, Zookeeper, and Schema Registry](https://jskim1991.medium.com/docker-docker-compose-example-for-kafka-zookeeper-and-schema-registry-c516422532e7)
-```
 
-Let me know if you need any modifications or have additional information to add.
