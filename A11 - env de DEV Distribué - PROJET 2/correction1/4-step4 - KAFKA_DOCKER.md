@@ -89,6 +89,8 @@
    # pip --version
    # apt install python3.10-venv
    # python3 -m venv kafka_env
+   # source kafka_env/bin/activate
+   # pip install kafka-python
    ```
    
 3. Créez les scripts **producer** et **consumer** en utilisant les commandes suivantes :
