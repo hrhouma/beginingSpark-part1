@@ -81,6 +81,15 @@
    # source kafka_env/bin/activate
    # pip install kafka-python
    ```
+
+   - Si vous utilisez une machine Debian comme Ubuntu 2204 !!
+
+   ```bash
+   # apt install python3-pip
+   # pip --version
+   # apt install python3.10-venv
+   # python3 -m venv kafka_env
+   ```
    
 3. Créez les scripts **producer** et **consumer** en utilisant les commandes suivantes :
    **Producer (producer.py)**
