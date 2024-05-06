@@ -15,6 +15,7 @@ Ce guide fournit des instructions détaillées pour configurer Kafka, Zookeeper 
    ```
 
 ## PARTIE (2/4) : Installer Docker méthode 1
+ ```sh
 su
 #ou sudo -s
 pwd
@@ -25,6 +26,7 @@ chmod +x install-docker.sh
 #ou sh install-docker.sh
 docker version
 docker compose version
+ ```
 
 
 ## PARTIE (3/4) : Installer Docker méthode 2
