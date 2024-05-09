@@ -1,0 +1,47 @@
+***********************************
+**************ATLIER KAFKA********* 
+***********************************
+*****1- Démarrez ZOOKEEPER
+C:\HADOOP\kafka_2.12-3.5.0\bin\windows\zookeeper-server-start.bat C:\HADOOP\kafka_2.12-3.5.0\config\zookeeper.properties 
+
+*****2- Démarrez le serveur KAFKA 
+C:\HADOOP\kafka_2.12-3.5.0\bin\windows\kafka-server-start.bat C:\HADOOP\kafka_2.12-3.5.0\config\server.properties
+
+*****3- Création d'un premier topic (ouvrir CMD dans windows)
+kafka-topics --bootstrap-server localhost:9092 --topic justine --create --partitions 1 --replication-factor 1
+
+*****4- Création de plusieurs topics (ouvrir CMD dans windows)
+kafka-topics --bootstrap-server localhost:9092 --topic myfirst --create --partitions 1 --replication-factor 1
+kafka-topics --bootstrap-server localhost:9092 --topic mysecond --create --partitions 1 --replication-factor 1
+kafka-topics --bootstrap-server localhost:9092 --topic mythird --create --partitions 1 --replication-factor 1
+
+*****5- lister les topics 
+kafka-topics --bootstrap-server localhost:9092 -list
+
+*****6- décrire un topic spécéfique 
+kafka-topics --bootstrap-server localhost:9092 --describe --topic justine
+kafka-topics --bootstrap-server localhost:9092 --describe --topic myfirst
+kafka-topics --bootstrap-server localhost:9092 --describe --topic mysecond
+kafka-topics --bootstrap-server localhost:9092 --describe --topic mythird
+
+*****7- Création d'un 4ème topic avec un facteur de répartition =3 (ouvrir CMD dans windows)
+kafka-topics --bootstrap-server localhost:9092 --topic myfourth --create --partitions 3 --replication-factor 1
+kafka-topics --bootstrap-server localhost:9092 --describe --topic myfourth
+
+
+*****8- Création d'un 5ème topic avec un facteur de réplication =3 (ouvrir CMD dans windows)
+kafka-topics --bootstrap-server localhost:9092 --topic myfifth --create --partitions 1 --replication-factor 3
+
+
+***Toutes les commandes
+C:\HADOOP\kafka_2.12-3.5.0\bin\windows\zookeeper-server-start.bat C:\HADOOP\kafka_2.12-3.5.0\config\zookeeper.properties 
+C:\HADOOP\kafka_2.12-3.5.0\bin\windows\kafka-server-start.bat C:\HADOOP\kafka_2.12-3.5.0\config\server.properties
+kafka-topics --bootstrap-server localhost:9092 --topic justine --create --partitions 1 --replication-factor 1
+kafka-topics --bootstrap-server localhost:9092 --topic myfirst --create --partitions 1 --replication-factor 1
+kafka-topics --bootstrap-server localhost:9092 --topic mysecond --create --partitions 1 --replication-factor 1
+kafka-topics --bootstrap-server localhost:9092 --topic mythird --create --partitions 1 --replication-factor 1
+kafka-topics --bootstrap-server localhost:9092 -list
+kafka-topics --bootstrap-server localhost:9092 --describe --topic justine
+kafka-topics --bootstrap-server localhost:9092 --describe --topic myfirst
+kafka-topics --bootstrap-server localhost:9092 --describe --topic mysecond
+kafka-topics --bootstrap-server localhost:9092 --describe --topic mythird
