@@ -617,3 +617,48 @@ kafka-avro-console-consumer --bootstrap-server localhost:9092,localhost:9093,loc
     B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.separator=" : " --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer`
     C. `for i in {1..100}; do echo "Message $i" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic; sleep 1; done`
     D. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --group test-group`
+
+
+# Partie 13 -QUIZ
+
+Voici un quiz simplifié basé sur les commandes Kafka que vous avez partagées :
+
+1. Quelle commande envoie un message JSON à un topic 'mytopic' ?
+   A. `echo '{"id": 1, "name": "John"}' | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic`
+   B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning`
+
+2. Comment envoyer des messages avec des timestamps ?
+   A. `echo "timestamp1:$(date +%s):Event at $(date)" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --group test-group`
+
+3. Quelle commande simule un flux continu de messages ?
+   A. `for i in {1..100}; do echo "Message $i" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic; sleep 1; done`
+   B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning`
+
+4. Comment envoyer des messages avec des clés et valeurs structurées ?
+   A. `echo "user1:{\"name\":\"Alice\",\"age\":30}" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --group test-group`
+
+5. Quelle commande utilise la sérialisation Avro pour envoyer des messages ?
+   A. `kafka-avro-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081 --property value.schema='{"type":"record","name":"User","fields":[{"name":"name","type":"string"}]}'`
+   B. `echo '{"id": 1, "name": "John"}' | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic`
+
+6. Comment afficher des messages JSON d'un topic 'mytopic' ?
+   A. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.separator=" : " --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer`
+   B. `echo "user1:{\"name\":\"Alice\",\"age\":30}" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+
+7. Quelle commande lit les messages en spécifiant un groupe de consommateurs ?
+   A. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --group test-group`
+   B. `echo "user1:{\"name\":\"Alice\",\"age\":30}" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+
+8. Comment lire des messages en filtrant par une clé spécifique ?
+   A. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property print.key=true --property key.separator=" : " --include "user1"`
+   B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --group test-group`
+
+9. Quelle commande surveille les performances et la latence lors de la lecture des messages ?
+   A. `kafka-consumer-perf-test --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --fetch-size 1048576 --messages 5000 --threads 1 --print-metrics`
+   B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning`
+
+10. Comment lire des messages d'un topic 'myavrotopic' en utilisant Avro pour la désérialisation ?
+    A. `kafka-avro-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081 --from-beginning`
+    B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --group test-group`
