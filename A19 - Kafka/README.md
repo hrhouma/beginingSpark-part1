@@ -1,3 +1,4 @@
+- Pratique : Voir le dossier correction dans 
 # 1 - Introduction à l'Atelier Kafka sous Windows / Linux
 
 Bienvenue à notre atelier Kafka, conçu pour vous initier à Apache Kafka, une plateforme de streaming distribuée qui permet de gérer le traitement et l'analyse de flux de données en temps réel. Kafka est largement utilisé pour construire des systèmes de messagerie robustes, des architectures orientées événements, et pour intégrer divers systèmes informatiques avec une latence faible.
