@@ -553,4 +553,67 @@ kafka-avro-console-consumer --bootstrap-server localhost:9092,localhost:9093,loc
 ```
 
 - Ces commandes couvrent une variété de scénarios, y compris l'envoi et la réception de messages simples, structurés et sérialisés, ainsi que des tests de performance pour vous aider à comprendre et à maîtriser Kafka dans un environnement plus dynamique et réaliste.
+# Partie 12 - QUIZ 
 
+
+1. Quelle commande est utilisée pour envoyer un message JSON à un topic 'mytopic' en utilisant plusieurs brokers ?
+   A. `kafka-console-producer --broker-list localhost:9092,localhost:9093 --topic mytopic`
+   B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning`
+   C. `echo '{"id": 1, "name": "John"}' | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic`
+   D. `kafka-avro-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic`
+
+2. Comment simuler l'envoi de messages avec des timestamps pour représenter des événements temporels ?
+   A. `for i in {1..100}; do echo "Message $i" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic; sleep 1; done`
+   B. `echo "timestamp1:$(date +%s):Event at $(date)" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   C. `echo "user1:{\"name\":\"Alice\",\"age\":30}" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   D. `kafka-avro-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081`
+
+3. Quelle est la méthode pour envoyer des messages en boucle afin de simuler un flux continu ?
+   A. `echo "user1:{\"name\":\"Alice\",\"age\":30}" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   B. `for i in {1..100}; do echo "Message $i" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic; sleep 1; done`
+   C. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.separator=" : " --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer`
+   D. `kafka-avro-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081`
+
+4. Comment envoyer des messages complexes avec des clés et des valeurs structurées ?
+   A. `kafka-console-producer --broker-list localhost:9092,localhost:9093 --topic mytopic`
+   B. `echo "user1:{\"name\":\"Alice\",\"age\":30}" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   C. `echo "timestamp1:$(date +%s):Event at $(date)" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   D. `for i in {1..100}; do echo "Message $i" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic; sleep 1; done`
+
+5. Quelle commande est nécessaire pour envoyer des messages utilisant la sérialisation Avro ?
+   A. `kafka-avro-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081 --property value.schema='{"type":"record","name":"User","fields":[{"name":"name","type":"string"}]}'`
+   B. `echo "timestamp1:$(date +%s):Event at $(date)" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   C. `echo "user1:{\"name\":\"Alice\",\"age\":30}" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   D. `for i in {1..100}; do echo "Message $i" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic; sleep 1; done`
+
+6. Comment lire et afficher des messages JSON d'un topic 'mytopic' en utilisant plusieurs brokers ?
+   A. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.separator=" : " --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer`
+   B. `echo "user1:{\"name\":\"Alice\",\"age\":30}" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   C. `kafka-console-producer --broker-list localhost:9092,localhost:9093 --topic mytopic`
+   D. `kafka-avro-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081`
+
+7. Quelle commande permet de lire les messages en spécifiant un groupe de consommateurs ?
+   A. `kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic`
+   B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --group test-group`
+   C. `echo "timestamp1:$(date +%s):Event at $(date)" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property "parse.key=true" --property "key.separator=:"`
+   D. `kafka-avro-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081`
+
+8. Comment lire les messages en filtrant par clé spécifique ?
+   A. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --property print.key=true --property key.separator=" : " --include "user1"`
+   B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.separator=" : " --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer`
+   C. `kafka-avro-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081`
+   D. `for i in {1..100}; do echo "Message $i" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic; sleep 1; done`
+
+9. Quelle est la méthode pour surveiller les performances et la latence lors de la lecture des messages ?
+   A. `kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic`
+   B. `kafka-consumer-perf-test --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --fetch-size 1048576 --messages 5000 --threads 1 --print-metrics`
+   C. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --group test-group`
+   D. `kafka-avro-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081 --from-beginning`
+
+10. Comment lire les messages d'un topic 'myavrotopic' en utilisant Avro pour la désérialisation ?
+    A. `kafka-avro-console-consumer --bootstrap
+
+-server localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081 --from-beginning`
+    B. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.separator=" : " --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer`
+    C. `for i in {1..100}; do echo "Message $i" | kafka-console-producer --broker-list localhost:9092,localhost:9093,localhost:9094 --topic mytopic; sleep 1; done`
+    D. `kafka-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic mytopic --group test-group`
