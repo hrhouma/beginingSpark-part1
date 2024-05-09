@@ -1,5 +1,5 @@
 # Partie 1
-Voici la liste des commandes avec des commentaires succincts pour votre atelier Kafka :
+## Une liste de commandes avec des commentaires succincts pour notre atelier Kafka :
 
 ***********************************
 **************ATELIER KAFKA********* 
@@ -76,7 +76,7 @@ kafka-topics --bootstrap-server localhost:9092 --describe --topic mythird
 
 
 # Partie2
-D'accord, voici une liste étendue de commandes Kafka pour différents usages, sans explications :
+## Une liste étendue de commandes Kafka pour différents usages :
 
 ```bash
 # Démarrer Zookeeper
@@ -140,7 +140,7 @@ kafka-consumer-groups --bootstrap-server localhost:9092 --group my-consumer-grou
 kafka-consumer-groups --bootstrap-server localhost:9092 --delete --group my-consumer-group
 ```
 # Partie 3
-Bien sûr, voici d'autres commandes Kafka pour diverses opérations :
+## Autres commandes Kafka pour diverses opérations :
 
 ```bash
 # Lister les groupes de consommateurs
@@ -190,7 +190,7 @@ kafka-reassign-partitions --bootstrap-server localhost:9092 --reassignment-json-
 kafka-console-consumer --bootstrap-server localhost:9092 --topic mycustom --property print.key=true --property key.separator="," --from-beginning
 ```
 # Partie 4
-Voici encore plus de commandes Kafka pour gérer divers aspects de vos topics et consommateurs :
+## PLus de commandes Kafka pour gérer divers aspects de vos topics et consommateurs :
 
 ```bash
 # Lire des messages d'un topic en format avancé
@@ -236,7 +236,7 @@ kafka-console-producer --bootstrap-server localhost:9092 --topic mythird --prope
 kafka-topics --bootstrap-server localhost:9092 --describe --topic myfifth --unavailable-partitions
 ```
 # Partie 5
-Voici une autre série de commandes Kafka pour une gestion avancée et des diagnostics :
+## Une autre série de commandes Kafka pour une gestion avancée et des diagnostics :
 
 ```bash
 # Simuler une consommation de messages pour tester la performance
@@ -279,7 +279,7 @@ kafka-topics --bootstrap-server localhost:9092 --create --topic advancedtopic --
 kafka-run-class kafka.tools.DumpLogSegments --files /path/to/logfile.log --print-data-log --deep-iteration --json
 ```
 # Partie 6
-Bien sûr, voici encore plus de commandes Kafka pour diverses opérations et diagnostics :
+## Encore plus de commandes Kafka pour diverses opérations et diagnostics :
 
 ```bash
 # Créer un snapshot des offsets actuels pour un groupe de consommateurs
@@ -328,7 +328,7 @@ kafka-producer-perf-test --topic mysecond --num-records 20000 --record-size 500 
 kafka-consumer-groups --bootstrap-server localhost:9092 --group my-group --reset-offsets --from-file /path/to/backup-file.json --execute
 ```
 # Partie 7
-Voici une nouvelle série de commandes Kafka pour vous aider à gérer et surveiller vos systèmes Kafka :
+## Une nouvelle série de commandes Kafka pour vous aider à gérer et surveiller vos systèmes Kafka :
 
 ```bash
 # Purger les données d'un topic sans supprimer le topic lui-même
@@ -377,7 +377,7 @@ kafka-acls --bootstrap-server localhost:9092 --remove --allow-principal User:ano
 kafka-producer-perf-test --producer-props bootstrap.servers=localhost:9092 --topic myadvanced --num-records 10000 --record-size 500 --throughput 1000 --producer-property batch.size=16384
 ```
 # Partie 8
-Voici encore plus de commandes Kafka pour divers usages et configurations :
+## Encore plus de commandes Kafka pour divers usages et configurations :
 
 ```bash
 # Surveiller et afficher les statistiques des requêtes pour un topic
@@ -423,7 +423,7 @@ kafka-topics --bootstrap-server localhost:9092 --create --topic myrestored --con
 kafka-console-consumer --bootstrap-server localhost:9092 --topic myfirst --group simulation-group --consumer-property fetch.max.wait.ms=1000 --max-messages 100
 ```
 # Partie 9
-Voici une série de commandes pour envoyer (produire) des messages dans un topic Kafka et pour recevoir (consommer) ces messages directement à partir de la ligne de commande, sans l'utilisation de programmes Python.
+## Série de commandes pour envoyer (produire) des messages dans un topic Kafka et pour recevoir (consommer) ces messages directement à partir de la ligne de commande, sans l'utilisation de programmes Python.
 
 ### Pour envoyer des messages dans un topic spécifique
 
@@ -466,7 +466,7 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic mytopic --timeo
 Ces commandes vous permettent de tester et de simuler des interactions avec vos topics Kafka directement à partir de la ligne de commande, facilitant ainsi le développement et le débogage sans l'intervention de scripts ou de programmes supplémentaires.
 
 # Partie 10
-Pour interagir avec plusieurs brokers Kafka pour envoyer et recevoir des messages, vous devez spécifier la liste des brokers lors de l'utilisation des commandes. Voici comment vous pouvez procéder :
+## Pour interagir avec plusieurs brokers Kafka pour envoyer et recevoir des messages, vous devez spécifier la liste des brokers lors de l'utilisation des commandes. Voici comment vous pouvez procéder :
 
 ### Envoyer des messages à un topic en spécifiant plusieurs brokers
 
@@ -552,5 +552,5 @@ kafka-consumer-perf-test --bootstrap-server localhost:9092,localhost:9093,localh
 kafka-avro-console-consumer --bootstrap-server localhost:9092,localhost:9093,localhost:9094 --topic myavrotopic --property schema.registry.url=http://localhost:8081 --from-beginning
 ```
 
-Ces commandes couvrent une variété de scénarios, y compris l'envoi et la réception de messages simples, structurés et sérialisés, ainsi que des tests de performance pour vous aider à comprendre et à maîtriser Kafka dans un environnement plus dynamique et réaliste.
+- Ces commandes couvrent une variété de scénarios, y compris l'envoi et la réception de messages simples, structurés et sérialisés, ainsi que des tests de performance pour vous aider à comprendre et à maîtriser Kafka dans un environnement plus dynamique et réaliste.
 
