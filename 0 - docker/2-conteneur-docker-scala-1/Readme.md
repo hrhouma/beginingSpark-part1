@@ -42,6 +42,9 @@ Une fois l'image construite, vous pouvez lancer un conteneur Docker basé sur ce
 
 ```sh
 docker run -it --name spark-test spark-scala-docker
+docker ps
+docker exec -it spark-test bash
+spark-shell
 ```
 
 Cette commande démarre un conteneur nommé `spark-test` à partir de l'image `spark-scala-docker` et vous donne accès à un terminal interactif à l'intérieur du conteneur.
