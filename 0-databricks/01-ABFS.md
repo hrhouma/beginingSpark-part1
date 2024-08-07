@@ -13,6 +13,9 @@ Azure Storage propose plusieurs services, chacun ayant son propre point de termi
 | Service de table          | table                | privatelink.table.core.windows.net |
 | Sites Web statiques       | web                  | privatelink.web.core.windows.net   |
 
+## Exemple  : 
+- wasbs://mycontainer@mystorageaccount.blob.core.windows.net/myfolder/myfile.txt
+
 ## **Point 2 : Comprendre les différences entre ABFSS et WASBS dans Azure Storage**
 
 ### **Aperçu :**
