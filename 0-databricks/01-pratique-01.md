@@ -183,18 +183,16 @@ display(df_tags)
 - **`tags="..."`** : Variable qui contient le chemin du fichier `tags.csv`.
 - **`df_tags = spark.read.format(file_type)`** : Même processus de lecture de fichier que précédemment.
 
----
+--------
 
-### README très détaillé pour un débutant
 
----
 
-#### Introduction
-Ce README est conçu pour un débutant complet qui souhaite comprendre chaque commande dans le notebook Databricks. Chaque commande sera expliquée en détail pour assurer une compréhension complète.
 
----
 
-#### 1. Lecture et affichage du fichier `ratings.csv`
+
+
+
+#### 11. Lecture et affichage du fichier `ratings.csv`
 
 ```python
 # COMMAND ----------
@@ -226,7 +224,7 @@ display(df_ratings)
 
 ---
 
-#### 2. Affichage du nombre de lignes et du contenu du DataFrame `df_movies`
+#### 12. Affichage du nombre de lignes et du contenu du DataFrame `df_movies`
 
 ```python
 # COMMAND ----------
@@ -243,7 +241,7 @@ display(df_movies)
 
 ---
 
-#### 3. Fusion par jointure à gauche de `df_movies` et `df_ratings`
+#### 13. Fusion par jointure à gauche de `df_movies` et `df_ratings`
 
 ```python
 # COMMAND ----------
@@ -261,7 +259,7 @@ display(df_movies_with_ratings) # Afficher df_movies_with_ratings
 
 ---
 
-#### 4. Groupement et comptage des occurrences dans `df_movies_with_ratings`
+#### 14. Groupement et comptage des occurrences dans `df_movies_with_ratings`
 
 ```python
 # COMMAND ----------
@@ -279,7 +277,7 @@ display(df_movies_no_dups) # Afficher df_movies_no_dups
 
 ---
 
-#### 5. Fusion par jointure interne de `df_movies_with_ratings` et `df_tags`
+#### 15. Fusion par jointure interne de `df_movies_with_ratings` et `df_tags`
 
 ```python
 # COMMAND ----------
@@ -297,7 +295,7 @@ display(df_movies_with_ratings) # Afficher les données
 
 ---
 
-#### 6. Fusion par jointure interne de `df_ratings` et `df_tags`
+#### 16. Fusion par jointure interne de `df_ratings` et `df_tags`
 
 ```python
 # COMMAND ----------
@@ -315,7 +313,7 @@ display(df_ratings_tags) # Afficher les données.
 
 ---
 
-#### 7. Affichage simple de `df_ratings`
+#### 17. Affichage simple de `df_ratings`
 
 ```python
 # COMMAND ----------
@@ -327,7 +325,7 @@ display(df_ratings) # Afficher df_ratings
 
 ---
 
-#### 8. Vérification du format des colonnes dans `df_ratings`
+#### 18. Vérification du format des colonnes dans `df_ratings`
 
 ```python
 # COMMAND ----------
@@ -339,7 +337,7 @@ df_ratings # Afficher le format de chaque colonne
 
 ---
 
-#### 9. Ajout d'une colonne `tsDate` dans `df_ratings`
+#### 19. Ajout d'une colonne `tsDate` dans `df_ratings`
 
 ```python
 # COMMAND ----------
@@ -356,7 +354,7 @@ df_ratings=df_ratings.withColumn("tsDate",f.from_unixtime("timestamp"))
 
 ---
 
-#### 10. Affichage final du DataFrame `df_ratings`
+#### 20. Affichage final du DataFrame `df_ratings`
 
 ```python
 # COMMAND ----------
@@ -371,16 +369,9 @@ display(df_ratings) # Afficher df_ratings
 
 
 
-### README très détaillé pour un débutant
 
----
 
-#### Introduction
-Ce README est conçu pour un débutant complet qui souhaite comprendre chaque commande dans le notebook Databricks. Chaque commande sera expliquée en détail pour assurer une compréhension complète.
-
----
-
-#### 1. Sélectionner et formater les colonnes dans `df_ratings`
+#### 21. Sélectionner et formater les colonnes dans `df_ratings`
 
 ```python
 # COMMAND ----------
@@ -403,7 +394,7 @@ df_ratings=df_ratings.select('userId', 'movieId', 'rating',f.to_date(unix_timest
 
 ---
 
-#### 2. Affichage du DataFrame `df_ratings`
+#### 22. Affichage du DataFrame `df_ratings`
 
 ```python
 # COMMAND ----------
@@ -415,7 +406,7 @@ display(df_ratings) # Afficher df_ratings
 
 ---
 
-#### 3. Calcul de la moyenne des notes par film
+#### 23. Calcul de la moyenne des notes par film
 
 ```python
 # COMMAND ----------
@@ -435,7 +426,7 @@ display(df_avg_ratings) # Afficher df_avg_ratings
 
 ---
 
-#### 4. Fusion des moyennes avec les détails des films
+#### 24. Fusion des moyennes avec les détails des films
 
 ```python
 # COMMAND ----------
@@ -456,7 +447,7 @@ display(df) # Afficher df
 
 ---
 
-#### 5. Comptage du nombre de notes par film
+#### 25. Comptage du nombre de notes par film
 
 ```python
 # COMMAND ----------
@@ -473,7 +464,7 @@ display (df_total_rating) # Afficher df_total_rating
 
 ---
 
-#### 6. Filtrage des films avec un nombre minimal de notes
+#### 26. Filtrage des films avec un nombre minimal de notes
 
 ```python
 # COMMAND ----------
@@ -488,7 +479,7 @@ df_ratings_filtered = df_ratings.join(df_total_rating,'movieID','inner') # Inner
 
 ---
 
-#### 7. Affichage et comptage des films filtrés
+#### 27. Affichage et comptage des films filtrés
 
 ```python
 # COMMAND ----------
@@ -503,7 +494,7 @@ print(df_total_rating.count()) # Afficher le nombre de lignes dans le DataFrame 
 
 ---
 
-#### 8. Calcul de la note maximale par utilisateur et par film
+#### 28. Calcul de la note maximale par utilisateur et par film
 
 ```python
 # COMMAND ----------
@@ -525,7 +516,7 @@ df_rating_per_user_movie=df_rating_per_user.join(df_movies,'movieID','inner') # 
 
 ---
 
-#### 9. Renommage et affichage des notes maximales
+#### 29. Renommage et affichage des notes maximales
 
 ```python
 # COMMAND ----------
@@ -540,7 +531,7 @@ display(df_rating_per_user_movie) # Afficher df_rating_per_user_movie
 
 ---
 
-#### 10. Vérification du format des colonnes
+#### 30. Vérification du format des colonnes
 
 ```python
 # COMMAND ----------
@@ -553,17 +544,7 @@ df_rating_per_user_movie # Vérifier le format de chaque colonne
 ---
 
 
-
-### README très détaillé pour un débutant
-
----
-
-#### Introduction
-Ce README est conçu pour un débutant complet qui souhaite comprendre chaque commande dans le notebook Databricks. Chaque commande sera expliquée en détail pour assurer une compréhension complète.
-
----
-
-#### 1. Conversion du type de donnée de `max_rating` en `float`
+#### 31. Conversion du type de donnée de `max_rating` en `float`
 
 ```python
 # COMMAND ----------
@@ -580,7 +561,7 @@ df_rating_per_user_movie = df_rating_per_user_movie.withColumn("max_rating", col
 
 ---
 
-#### 2. Sélection et regroupement des colonnes dans `df_rating_per_user_movie`
+#### 32. Sélection et regroupement des colonnes dans `df_rating_per_user_movie`
 
 ```python
 # COMMAND ----------
@@ -595,7 +576,7 @@ df_rating=df_rating_per_user_movie.groupby('userId','movieId','title','genres').
 
 ---
 
-#### 3. Affichage de `df_rating`
+#### 33. Affichage de `df_rating`
 
 ```python
 # COMMAND ----------
@@ -607,7 +588,7 @@ display(df_rating) # Afficher df_rating
 
 ---
 
-#### 4. Filtrage des films avec une note supérieure ou égale à 4
+#### 34. Filtrage des films avec une note supérieure ou égale à 4
 
 ```python
 # COMMAND ----------
@@ -626,7 +607,7 @@ display(df_rating) # Afficher df_rating
 
 ---
 
-#### 5. Identification des meilleurs films par genre
+#### 35. Identification des meilleurs films par genre
 
 ```python
 # COMMAND ----------
@@ -644,7 +625,7 @@ display(df_movies_per_genre) # Afficher df_movies_per_genre
 
 ---
 
-#### 6. Comptage des films par utilisateur et par genre
+#### 36. Comptage des films par utilisateur et par genre
 
 ```python
 # COMMAND ----------
@@ -659,7 +640,7 @@ df_rating_genre=df_rating.select('userId','title','genres').groupby('userId','ge
 
 ---
 
-#### 7. Affichage du comptage par genre et par utilisateur
+#### 37. Affichage du comptage par genre et par utilisateur
 
 ```python
 # COMMAND ----------
@@ -671,7 +652,7 @@ display(df_rating_genre) # Afficher df_rating_genre.
 
 ---
 
-#### 8. Identification des films récents par utilisateur
+#### 38. Identification des films récents par utilisateur
 
 ```python
 # COMMAND ----------
@@ -686,7 +667,7 @@ df_recent_movie=df_ratings.groupby('userId','movieId').agg(f.max(df_ratings['rat
 
 ---
 
-#### 9. Affichage des films récents par utilisateur
+#### 39. Affichage des films récents par utilisateur
 
 ```python
 # COMMAND ----------
@@ -698,7 +679,7 @@ display(df_recent_movie) # Afficher df_recent_movie
 
 ---
 
-#### 10. Affichage du format des colonnes dans `df_ratings`
+#### 40. Affichage du format des colonnes dans `df_ratings`
 
 ```python
 # COMMAND ----------
@@ -711,7 +692,7 @@ df_ratings # Afficher le format de chaque colonne de df_ratings.
 
 ---
 
-#### 11. Calcul de la moyenne des notes par genre
+#### 41. Calcul de la moyenne des notes par genre
 
 ```python
 # COMMAND ----------
