@@ -1,7 +1,7 @@
 # Vue d'ensemble des services de stockage Azure
 
 ---
-# **Point 1 : Services de stockage Azure et points de terminaison privés**
+## **Point 1 : Services de stockage Azure et points de terminaison privés**
 ---
 
 Azure Storage propose plusieurs services, chacun ayant son propre point de terminaison privé. Voici une liste de ces services et leurs URL de point de terminaison privé correspondantes :
@@ -19,7 +19,7 @@ Azure Storage propose plusieurs services, chacun ayant son propre point de termi
 - wasbs://mycontainer@mystorageaccount.blob.core.windows.net/myfolder/myfile.txt
 
 ---
-# **Point 2 : Comprendre les différences entre ABFSS et WASBS dans Azure Storage**
+## **Point 2 : Comprendre les différences entre ABFSS et WASBS dans Azure Storage**
 ---
 
 ### **Aperçu :**
@@ -60,7 +60,7 @@ Azure Storage propose plusieurs services, chacun ayant son propre point de termi
 - **DFS** : Distributed File System
 
 ---
-# **Point 3 : Ressources supplémentaires**
+## **Point 3 : Ressources supplémentaires**
 ---
 
 ### **Tutoriel vidéo : Monter Azure Data Lake Storage dans Databricks**
