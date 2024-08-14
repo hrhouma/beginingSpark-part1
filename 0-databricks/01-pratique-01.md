@@ -1,8 +1,6 @@
 #### 1. Exécution d'un script Python externe
 
 ```python
-# Databricks notebook source
-# Exécuter le script Python externe chemin "/Shared/MovieRecommendation/Authorization.py",utiliser ses variables. 
 %run /Shared/MovieRecommendation/Authorization.py 
 ```
 
