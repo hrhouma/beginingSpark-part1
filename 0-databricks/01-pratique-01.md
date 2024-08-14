@@ -12,15 +12,8 @@
 #### 2. Commande pour réexécuter un script
 
 ```python
-# Databricks notebook source
-# DBTITLE 1,Cmd1
-# MAGIC %run /MovieRecommendation/Authorization
+%run /MovieRecommendation/Authorization
 ```
-
-- **`# MAGIC`** : Ceci indique que la ligne qui suit est une commande magique. Dans ce cas, elle est utilisée pour exécuter un autre script externe nommé `Authorization`.
-- **`DBTITLE 1,Cmd1`** : Cette ligne sert uniquement à titre indicatif pour afficher un titre dans le notebook.
-
----
 
 #### 3. Lecture d'un fichier CSV dans Spark
 
