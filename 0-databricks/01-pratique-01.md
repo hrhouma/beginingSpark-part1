@@ -122,8 +122,8 @@ df_movies.createOrReplaceTempView(temp_table_name)
 #### 8. Exécution de requêtes SQL
 
 ```python
-# %sql # Exécuter des requêtes SQL dans Jupyter Notebook
-# select * from movies_csv  # Sélectionner toutes les données dans le tableau "movies_csv"
+%sql 
+select * from `movies_csv` 
 ```
 
 - **`%sql`** : Cette commande magique permet d'exécuter du code SQL dans le notebook. 
