@@ -13,7 +13,7 @@ spark = SparkSession.builder \
 amrb_data = spark.read \
     .option("header", "true") \
     .option("inferSchema", "true") \
-    .csv("path/to/AMRB.csv")
+    .csv("AMRB.csv")
 
 # Créer une vue temporaire pour utiliser Spark SQL
 amrb_data.createOrReplaceTempView("amrb")
