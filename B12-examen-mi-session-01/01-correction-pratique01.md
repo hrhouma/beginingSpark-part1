@@ -386,8 +386,6 @@ Une **for-comprehension** est une manière concise et puissante d'itérer sur de
 
 ---
 
-D'accord, allons-y étape par étape pour simplifier.
-
 ### Qu'est-ce qu'une for-comprehension en Scala ?
 
 Une **for-comprehension** en Scala, c'est un moyen de parcourir une collection (comme une liste) et de créer une **nouvelle collection** en appliquant des transformations et des filtres sur les éléments.
