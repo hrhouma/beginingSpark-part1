@@ -55,9 +55,7 @@ Intéressé par les certifications AWS ? Explorez des cours complets avec des d�
 - [Architecte Solutions Certifié AWS - Associé](https://academy.zerotomastery.io/a/aff_lnk)
 
 ## Remerciements
-Certains codes dans ce projet ont été adaptés de [Tutoriels pour débuter avec AWS](https
-
-://aws.amazon.com/fr/getting-started/).
+Certains codes dans ce projet ont été adaptés de [Tutoriels pour débuter avec AWS](https://aws.amazon.com/fr/getting-started/).
 
 ## Conclusion
 Ce tutoriel offre une approche pratique pour apprendre AWS en construisant une application web réelle. En suivant ces étapes, vous aurez une bonne base pour explorer plus avant les services AWS et leur intégration dans des projets de développement d'applications.
