@@ -6,6 +6,10 @@
 
 # Étapes
 
+# 0. Installez git :
+
+- https://phoenixnap.com/kb/how-to-install-git-windows 
+
 # 1. Initialiser un dépôt Git
 
 Commencez par initialiser un nouveau dépôt Git dans votre répertoire de projet :
