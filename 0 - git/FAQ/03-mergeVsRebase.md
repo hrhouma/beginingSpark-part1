@@ -1,4 +1,4 @@
-- Différences entre `git merge` et `git rebase`  :
+# Différences entre `git merge` et `git rebase`  :
 
 ![image](https://github.com/user-attachments/assets/2cd31f13-b077-4b93-935c-5f4bb193825e)
 
