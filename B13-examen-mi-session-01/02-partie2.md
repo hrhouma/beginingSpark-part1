@@ -99,7 +99,8 @@ Ces optimisations améliorent la lisibilité, la performance et la robustesse du
 ----------------------------------------------------------------------------
 
 
-- Je vous proposeune version complète et optimisée du code, intégrant toutes les recommandations pour assurer une meilleure lisibilité, performance, et robustesse dans un contexte de Big Data :
+- Je vous propose ci-bas un exemple de version optimisée du code, intégrant toutes les recommandations pour assurer une meilleure lisibilité, performance, et robustesse dans un contexte de Big Data.
+
 
 ```scala
 import org.apache.spark.{SparkConf, SparkContext}
