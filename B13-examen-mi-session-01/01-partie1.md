@@ -3,8 +3,10 @@
 
 Justification : RDD signifie Resilient Distributed Dataset. C'est l'abstraction de données fondamentale de Spark, représentant une collection distribuée et tolérante aux pannes d'éléments.
 
-2. c) Les DataFrames sont optimisés pour les performances.
-   d) Les RDDs ne supportent pas les opérations SQL.
+2.
+c) Les DataFrames sont optimisés pour les performances.
+
+d) Les RDDs ne supportent pas les opérations SQL.
 
 Justification : Ces deux réponses sont correctes. Les DataFrames sont optimisés pour les performances grâce à leur structure tabulaire et leur schéma. Les RDDs ne supportent pas nativement les opérations SQL, contrairement aux DataFrames.
 
