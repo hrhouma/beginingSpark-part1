@@ -1,7 +1,9 @@
 # proposition de réponse 1 
 
 
-Le code proposé est fonctionnel, mais il y a plusieurs aspects qui peuvent être optimisés pour améliorer la lisibilité, la performance et la sécurité du code. Voici quelques recommandations :
+Le code proposé est fonctionnel, mais il y a plusieurs aspects qui peuvent être optimisés pour améliorer la lisibilité, la performance et la sécurité du code. 
+
+# Recommandations :
 
 1. **Utilisation de `val` au lieu de `var` :**
    - **Pourquoi ?** : En Scala, il est préférable d’utiliser `val` pour déclarer des variables immuables. Cela rend le code plus sûr et évite les erreurs liées à des modifications inattendues des variables.
